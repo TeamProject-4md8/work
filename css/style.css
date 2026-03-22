@@ -212,12 +212,10 @@ h2 {
 .popular-box {
   position: relative;
   min-height: 700px;
+  overflow: hidden;
 }
 
-.pop-item {
-  position: absolute;
-  width: 170px;
-}
+
 
 .pop-item span {
   display: inline-block;
@@ -228,10 +226,7 @@ h2 {
   font-size: 12px;
 }
 
-.pop1 { left: 20px; top: 30px; }
-.pop2 { right: 30px; top: 10px; }
-.pop3 { left: 100px; top: 280px; }
-.pop4 { left: 40px; bottom: 30px; }
+
 
 .main-card {
   width: 340px;
@@ -452,4 +447,115 @@ h2 {
   .quote-box {
     padding: 30px 20px;
   }
+}
+
+/* доп */
+
+.pop-item {
+  position: absolute;
+  transition: 0.4s;
+  z-index: 1;
+  width: 220px; /* фикс ширина */
+}
+
+/* ВСЕ товары по умолчанию четкие */
+.popular-box .pop-item {
+  filter: none;
+}
+
+/* Левитация */
+.pop-item img {
+  animation: float 4s ease-in-out infinite;
+  width: 100%;
+  height: auto;
+}
+
+
+
+/* Наведение — становится четким */
+.pop-item:hover {
+  filter: blur(0px) opacity(1);
+  transform: scale(1.05);
+  z-index: 5;
+}
+
+/* текст тоже скрываем */
+.pop-item span {
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.pop-item:hover span {
+  opacity: 1;
+}
+
+.pop-item:hover .card-bg {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.hover-card {
+  position: absolute;
+  width: 220px;
+  height: 260px;
+  background: white;
+  border-radius: 20px;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.9);
+  transition: 
+    transform 0.25s ease,
+    opacity 0.25s ease;
+
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  z-index: 10;
+}
+
+.hover-card.active {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.hover-content {
+  padding: 20px;
+  text-align: center;
+}
+.card-bg {
+  position: absolute;
+  inset: 0;
+  border-radius: 28px;
+  background: #f3f1ec;
+  border: 1.5px solid #000000;
+
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 0.35s ease;
+  z-index: -1;
+}
+
+.popular-box.blur-active .pop-item {
+  filter: blur(6px) opacity(0.5);
+  transition: 0.4s;
+}
+
+/* активный товар — всегда четкий */
+.popular-box.blur-active .pop-item.active {
+  filter: none;
+  transform: scale(1.03);
+  z-index: 5;
+}
+.info {
+  padding: 10px;
+  text-align: center;
+}
+
+.price .old {
+  text-decoration: line-through;
+  color: #aaa;
+}
+
+.price .new {
+  font-size: 28px;
+  font-weight: bold;
+  color: #ff4f7a;
 }
