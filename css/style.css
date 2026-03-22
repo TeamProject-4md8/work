@@ -1,3 +1,9 @@
+@font-face {
+  font-family: 'Lobelia';
+  src: url('../font/Lobelia.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
