@@ -231,5 +231,94 @@ if (orderForm) {
   })
 }
 
+// работа ливитации и тд для карт
+document.addEventListener('DOMContentLoaded', () => {
+  const items = document.querySelectorAll('.pop-item');
+  const box = document.querySelector('.popular-box');
+
+  function updateBoxHeight() {
+  let maxBottom = 0;
+
+  items.forEach(item => {
+    const rect = item.getBoundingClientRect();
+    const boxRect = box.getBoundingClientRect();
+
+    const bottom = rect.top - boxRect.top + rect.height;
+
+    if (bottom > maxBottom) {
+      maxBottom = bottom;
+    }
+  });
+
+  box.style.height = maxBottom + 50 + 'px';
+}
+
+  if (!items.length || !box) return;
+
+  const positions = [];
+
+  function isFarEnough(x, y) {
+    return positions.every(pos => {
+      const dx = pos.x - x;
+      const dy = pos.y - y;
+      return Math.sqrt(dx * dx + dy * dy) > 140;
+    });
+  }
+
+  items.forEach(item => {
+  
+    const padding = 220;
+
+    const maxX = box.clientWidth - padding;
+    const maxY = box.clientHeight - padding;
+
+    let x, y;
+    let tries = 0;
+
+    do {
+      x = Math.random() * maxX;
+      y = Math.random() * maxY;
+      tries++;
+    } while (!isFarEnough(x, y) && tries < 10);
+
+    positions.push({ x, y });
+
+    item.style.left = x + 'px';
+    item.style.top = y + 'px';
+
+
+    const duration = 3 + Math.random() * 3;
+    const delay = Math.random() * 2;
+    const amplitude = 10 + Math.random() * 15;
+
+    const animName = `float-${Math.random().toString(36).substr(2, 5)}`;
+
+    const style = document.createElement("style");
+    style.innerHTML = `
+      @keyframes ${animName} {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-${amplitude}px); }
+        100% { transform: translateY(0px); }
+      }
+    `;
+    document.head.appendChild(style);
+
+    item.style.animation = `${animName} ${duration}s ease-in-out ${delay}s infinite`;
+
+  
+    item.addEventListener('mouseenter', () => {
+      item.classList.add('active');
+      box.classList.add('blur-active');
+    });
+
+    item.addEventListener('mouseleave', () => {
+      item.classList.remove('active');
+      box.classList.remove('blur-active');
+    });
+  });
+});
+
 showProducts()
 updateCart()
+updateBoxHeight()
+
