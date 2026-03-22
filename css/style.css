@@ -4,6 +4,7 @@
   font-weight: normal;
   font-style: normal;
 }
+
 body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
@@ -19,6 +20,14 @@ img {
 a {
   text-decoration: none;
   color: inherit;
+}
+
+h1, h2 {
+  font-family: 'Lobelia', 'Montserrat', sans-serif;
+}
+
+.logo span {
+  font-family: 'Lobelia', 'Montserrat', sans-serif;
 }
 
 h2 {
@@ -62,6 +71,23 @@ h2 {
   font-size: 14px;
 }
 
+.menu a {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #8F363F;
+  transition: all 0.3s ease;
+}
+
+.menu a:hover {
+  color: #FFF7CD;
+}
+
+.menu a:active {
+  color: #0C0C0C;
+}
+
 .hero {
   background: #f4bfd0;
   padding: 60px 0 100px;
@@ -97,6 +123,9 @@ h2 {
   border-radius: 30px;
   display: inline-block;
   font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
 }
 
 .pink-btn {
@@ -104,10 +133,30 @@ h2 {
   color: white;
 }
 
+.pink-btn:hover {
+  background: #FFF7CD;
+  color: #8F363F;
+}
+
+.pink-btn:active {
+  background: #0C0C0C;
+  color: #FFF8B9;
+}
+
 .cream-btn {
   background: #f0e3aa;
   color: #7d3448;
   border: none;
+}
+
+.cream-btn:hover {
+  background: #FFC7D8;
+  color: #8F363F;
+}
+
+.cream-btn:active {
+  background: #0C0C0C;
+  color: #FFF8B9;
 }
 
 .hero-img {
@@ -195,9 +244,11 @@ h2 {
 }
 
 .card-simple h3 {
+  font-family: 'Montserrat', sans-serif;
   font-size: 14px;
   margin-bottom: 10px;
   text-transform: uppercase;
+  font-weight: 800;
 }
 
 .card-simple p {
@@ -221,8 +272,6 @@ h2 {
   overflow: hidden;
 }
 
-
-
 .pop-item span {
   display: inline-block;
   margin-top: 10px;
@@ -232,7 +281,18 @@ h2 {
   font-size: 12px;
 }
 
+.pop-item h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
 
+.pop-item p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  margin: 5px 0;
+}
 
 .main-card {
   width: 340px;
@@ -246,8 +306,10 @@ h2 {
 }
 
 .main-card h3 {
+  font-family: 'Montserrat', sans-serif;
   font-size: 18px;
   margin: 15px 0 10px;
+  font-weight: 800;
 }
 
 .main-card p {
@@ -280,10 +342,24 @@ h2 {
 
 .filter-btn {
   border: none;
-  background: #ececec;
+  background: #EDEDED;
   padding: 10px 18px;
   border-radius: 25px;
   cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  color: #0C0C0C;
+  transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+  background: #FFF7CD;
+  color: #8F363F;
+}
+
+.filter-btn:active {
+  background: #EA4669;
+  color: #FFFFFF;
 }
 
 .filter-btn.active {
@@ -311,20 +387,41 @@ h2 {
 }
 
 .item h3 {
+  font-family: 'Montserrat', sans-serif;
   font-size: 16px;
   min-height: 40px;
+  font-weight: 700;
 }
 
 .item p {
+  font-family: 'Montserrat', sans-serif;
   font-weight: 700;
+  font-size: 18px;
+  color: #ef5a84;
 }
 
 .item button {
   border: none;
-  background: #ef5a84;
-  color: white;
+  background: #EA4669;
+  color: #FFFFFF;
   padding: 10px 18px;
   border-radius: 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.item button:hover {
+  background: #FFF7CD;
+  color: #8F363F;
+  transform: scale(1.05);
+}
+
+.item button:active {
+  background: #0C0C0C;
+  color: #FFF8B9;
+  transform: scale(0.98);
 }
 
 .cart-box {
@@ -351,11 +448,13 @@ h2 {
   padding: 10px 14px;
   border-radius: 12px;
   margin-bottom: 10px;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .cart-total {
   font-size: 20px;
   font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .cart-right form {
@@ -368,6 +467,31 @@ h2 {
   border: none;
   padding: 12px 14px;
   border-radius: 10px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.cart-right button {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  background: #FFF7CD;
+  color: #8F363F;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cart-right button:hover {
+  background: #FFC7D8;
+  color: #8F363F;
+  transform: scale(1.02);
+}
+
+.cart-right button:active {
+  background: #0C0C0C;
+  color: #FFF8B9;
+  transform: scale(0.98);
 }
 
 .message {
@@ -389,6 +513,19 @@ h2 {
   min-width: 220px;
 }
 
+.contact-card h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.contact-card p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
 .footer {
   background: #efe1aa;
   margin-top: 40px;
@@ -402,6 +539,15 @@ h2 {
 
 .footer-box {
   padding: 30px 0 50px;
+}
+
+.footer-box .logo span {
+  font-family: 'Lobelia', 'Montserrat', sans-serif;
+}
+
+.footer-box p {
+  font-family: 'Montserrat', sans-serif;
+  margin-top: 15px;
 }
 
 @media (max-width: 992px) {
@@ -455,37 +601,29 @@ h2 {
   }
 }
 
-/* доп */
-
 .pop-item {
   position: absolute;
   transition: 0.4s;
   z-index: 1;
-  width: 220px; /* фикс ширина */
+  width: 220px;
 }
 
-/* ВСЕ товары по умолчанию четкие */
 .popular-box .pop-item {
   filter: none;
 }
 
-/* Левитация */
 .pop-item img {
   animation: float 4s ease-in-out infinite;
   width: 100%;
   height: auto;
 }
 
-
-
-/* Наведение — становится четким */
 .pop-item:hover {
   filter: blur(0px) opacity(1);
   transform: scale(1.05);
   z-index: 5;
 }
 
-/* текст тоже скрываем */
 .pop-item span {
   opacity: 0;
   transition: 0.3s;
@@ -512,7 +650,6 @@ h2 {
   transition: 
     transform 0.25s ease,
     opacity 0.25s ease;
-
   box-shadow: 0 20px 40px rgba(0,0,0,0.15);
   z-index: 10;
 }
@@ -526,13 +663,13 @@ h2 {
   padding: 20px;
   text-align: center;
 }
+
 .card-bg {
   position: absolute;
   inset: 0;
   border-radius: 28px;
   background: #f3f1ec;
   border: 1.5px solid #000000;
-
   opacity: 0;
   transform: scale(0.9);
   transition: all 0.35s ease;
@@ -544,12 +681,12 @@ h2 {
   transition: 0.4s;
 }
 
-/* активный товар — всегда четкий */
 .popular-box.blur-active .pop-item.active {
   filter: none;
   transform: scale(1.03);
   z-index: 5;
 }
+
 .info {
   padding: 10px;
   text-align: center;
