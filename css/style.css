@@ -104,7 +104,7 @@ h2 {
   font-size: 82px;
   line-height: 0.9;
   margin-bottom: 20px;
-  color: #c93e69;
+  color: #EA4669;
 }
 
 .hero-text p {
@@ -701,4 +701,40 @@ h2 {
   font-size: 28px;
   font-weight: bold;
   color: #ff4f7a;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.social-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  transition: all 0.3s ease;
+}
+
+.social-link:hover .social-icon {
+  transform: scale(1.1);
+  filter: brightness(0) saturate(100%) invert(27%) sepia(89%) saturate(250%) hue-rotate(320deg) brightness(95%) contrast(95%);
+}
+
+@media (max-width: 768px) {
+  .social-icons {
+    gap: 12px;
+  }
+  
+  .social-icon {
+    width: 20px;
+    height: 20px;
+  }
 }
