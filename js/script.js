@@ -2,51 +2,17 @@ const supabaseUrl = 'https://oivswyxszlbvkduuhdqd.supabase.co'
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9pdnN3eXhzemxidmtkdXVoZHFkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM2MjcwMTksImV4cCI6MjA4OTIwMzAxOX0.qDqMN9ZjRhDUmjJRrN8FXOrgmQR_S9TM7o3Zuw4qp98'
 const supabaseClient = window.supabase.createClient(supabaseUrl, supabaseKey)
 
+// ===== ПРОДУКТЫ =====
 const products = [
-  {
-    id: 1,
-    name: "Сливки для торта",
-    category: "cream",
-    price: 750,
-    image: "img/Rectangle 186-2.png"
-  },
-  {
-    id: 2,
-    name: "Клубничная глазурь",
-    category: "fillings",
-    price: 110,
-    image: "img/Rectangle 186.png"
-  },
-  {
-    id: 3,
-    name: "Начинка Ириска",
-    category: "fillings",
-    price: 620,
-    image: "img/Rectangle 186-1.png"
-  },
-  {
-    id: 4,
-    name: "Конфитюр малина",
-    category: "jams",
-    price: 450,
-    image: "img/Rectangle 187.png"
-  },
-  {
-    id: 5,
-    name: "Фисташковый круассан",
-    category: "croissants",
-    price: 499,
-    image: "img/freepik__-__30101 3.png"
-  },
-  {
-    id: 6,
-    name: "Круассан с розой",
-    category: "croissants",
-    price: 519,
-    image: "img/freepik__-__30100 3.png"
-  }
+  { id: 1, name: "Сливки для торта", category: "cream", price: 750, image: "img/Rectangle 186-2.png" },
+  { id: 2, name: "Клубничная глазурь", category: "fillings", price: 110, image: "img/Rectangle 186.png" },
+  { id: 3, name: "Начинка Ириска", category: "fillings", price: 620, image: "img/Rectangle 186-1.png" },
+  { id: 4, name: "Конфитюр малина", category: "jams", price: 450, image: "img/Rectangle 187.png" },
+  { id: 5, name: "Фисташковый круассан", category: "croissants", price: 499, image: "img/freepik__-__30101 3.png" },
+  { id: 6, name: "Круассан с розой", category: "croissants", price: 519, image: "img/freepik__-__30100 3.png" }
 ]
 
+// ===== DOM =====
 const catalogList = document.getElementById("catalogList")
 const filterButtons = document.querySelectorAll(".filter-btn")
 const cartItems = document.getElementById("cartItems")
@@ -56,269 +22,222 @@ const message = document.getElementById("message")
 
 let cart = []
 
+// ===== КАТАЛОГ =====
 function showProducts(category = "all") {
   if (!catalogList) return
-
   catalogList.innerHTML = ""
 
-  let filtered = products
-
-  if (category !== "all") {
-    filtered = products.filter(product => product.category === category)
-  }
+  let filtered = category === "all"
+    ? products
+    : products.filter(p => p.category === category)
 
   filtered.forEach(product => {
     const card = document.createElement("div")
     card.className = "item"
 
     card.innerHTML = `
-      <img src="${product.image}" alt="${product.name}">
+      <img src="${product.image}">
       <h3>${product.name}</h3>
       <p>${product.price} ₽</p>
       <button>В корзину</button>
     `
 
-    const button = card.querySelector("button")
-    button.addEventListener("click", function () {
-      addToCart(product.id)
-    })
-
+    card.querySelector("button").onclick = () => addToCart(product.id)
     catalogList.appendChild(card)
   })
 }
 
+// ===== КОРЗИНА =====
 function addToCart(id) {
-  const product = products.find(item => item.id === id)
-  if (!product) return
-
-  const found = cart.find(item => item.id === id)
+  const product = products.find(p => p.id === id)
+  const found = cart.find(p => p.id === id)
 
   if (found) {
-    found.count += 1
+    found.count++
   } else {
-    cart.push({
-      ...product,
-      count: 1
-    })
+    cart.push({ ...product, count: 1 })
   }
 
   updateCart()
+  syncPopularCounts()
 }
 
 function updateCart() {
-  if (!cartItems || !totalPrice) return
+  if (!cartItems) return
 
-  if (cart.length === 0) {
+  if (!cart.length) {
     cartItems.innerHTML = "Пока пусто"
     totalPrice.textContent = "0 ₽"
     return
   }
 
-  cartItems.innerHTML = ""
   let total = 0
+  cartItems.innerHTML = ""
 
   cart.forEach(item => {
     total += item.price * item.count
 
     const row = document.createElement("div")
     row.className = "cart-row"
-    row.innerHTML = `${item.name} — ${item.count} шт.`
+    row.innerText = `${item.name} — ${item.count} шт.`
     cartItems.appendChild(row)
   })
 
   totalPrice.textContent = total + " ₽"
 }
 
-function getCartTotal() {
-  let total = 0
-
-  cart.forEach(item => {
-    total += item.price * item.count
-  })
-
-  return total
+function getCartItemCount(id) {
+  const item = cart.find(p => p.id === id)
+  return item ? item.count : 0
 }
 
-async function createOrder(orderData) {
-  const { data, error } = await supabaseClient
-      .from("orders")
-      .insert([orderData])
-      .select()
+function setCartItemCount(id, count) {
+  const product = products.find(p => p.id === id)
+  const found = cart.find(p => p.id === id)
 
-  if (error) {
-    console.log("Ошибка orders:", error.message)
-    console.log("Полная ошибка:", error)
-    return null
+  if (count <= 0) {
+    cart = cart.filter(p => p.id !== id)
+  } else if (found) {
+    found.count = count
+  } else {
+    cart.push({ ...product, count })
   }
 
-  console.log("Заказ создан:", data)
-  return data[0]
+  updateCart()
+  syncPopularCounts()
 }
 
-async function createOrderItems(orderId) {
-  const items = cart.map(item => ({
-    order_id: orderId,
-    product_id: item.id,
-    product_name: item.name,
-    price: item.price,
-    quantity: item.count
-  }))
-
-  const { data, error } = await supabaseClient
-      .from("order_items")
-      .insert(items)
-      .select()
-
-  if (error) {
-    console.log("Ошибка order_items:", error.message)
-    console.log("Полная ошибка:", error)
-    return false
-  }
-
-  console.log("Позиции созданы:", data)
-  return true
-}
-
-filterButtons.forEach(button => {
-  button.addEventListener("click", function () {
-    filterButtons.forEach(btn => btn.classList.remove("active"))
-    this.classList.add("active")
-    showProducts(this.dataset.filter)
+function syncPopularCounts() {
+  document.querySelectorAll(".pop-item").forEach(item => {
+    const id = +item.dataset.id
+    const el = item.querySelector(".pop-count")
+    if (el) el.textContent = getCartItemCount(id)
   })
+}
+
+// ===== ФИЛЬТРЫ =====
+filterButtons.forEach(btn => {
+  btn.onclick = () => {
+    filterButtons.forEach(b => b.classList.remove("active"))
+    btn.classList.add("active")
+    showProducts(btn.dataset.filter)
+  }
 })
 
+// ===== ОТПРАВКА =====
 if (orderForm) {
-  orderForm.addEventListener("submit", async function (e) {
+  orderForm.onsubmit = async (e) => {
     e.preventDefault()
 
-    if (cart.length === 0) {
-      message.textContent = "Сначала добавьте товар в корзину."
+    if (!cart.length) {
+      message.textContent = "Добавьте товар"
       return
     }
 
     const formData = new FormData(orderForm)
 
-    const orderData = {
+    const order = {
       name: formData.get("name"),
       phone: formData.get("phone"),
       email: formData.get("email"),
       address: formData.get("address"),
       comment: formData.get("comment"),
-      total_price: getCartTotal(),
+      total_price: cart.reduce((s, i) => s + i.price * i.count, 0),
       delivery_price: 350
     }
 
-    message.textContent = "Отправка заказа..."
+    const { data, error } = await supabaseClient.from("orders").insert([order]).select()
+    if (error) return
 
-    const createdOrder = await createOrder(orderData)
+    await supabaseClient.from("order_items").insert(
+      cart.map(i => ({
+        order_id: data[0].id,
+        product_id: i.id,
+        product_name: i.name,
+        price: i.price,
+        quantity: i.count
+      }))
+    )
 
-    if (!createdOrder) {
-      message.textContent = "Ошибка при создании заказа."
-      return
-    }
-
-    const itemsCreated = await createOrderItems(createdOrder.id)
-
-    if (!itemsCreated) {
-      message.textContent = "Заказ создался, но позиции не записались."
-      return
-    }
-
-    message.textContent = "Заказ успешно отправлен в Supabase."
-    orderForm.reset()
+    message.textContent = "Заказ отправлен"
     cart = []
     updateCart()
-  })
+    syncPopularCounts()
+    orderForm.reset()
+  }
 }
 
-// работа ливитации и тд для карт
-document.addEventListener('DOMContentLoaded', () => {
-  const items = document.querySelectorAll('.pop-item');
-  const box = document.querySelector('.popular-box');
+// ===== POPULAR БЛОК =====
+document.addEventListener("DOMContentLoaded", () => {
+  const items = document.querySelectorAll(".pop-item")
+  const box = document.querySelector(".popular-box")
 
-  function updateBoxHeight() {
-  let maxBottom = 0;
+  const positions = [
+    { x: 10, y: 65 },
+    { x: 75, y: 70 },
+    { x: 20, y: 30 },
+    { x: 60, y: 50 },
+    { x: 55, y: 10 },
+    { x: 80, y: 15 },
+    { x: 60, y: 85 }
+  ]
 
-  items.forEach(item => {
-    const rect = item.getBoundingClientRect();
-    const boxRect = box.getBoundingClientRect();
+  items.forEach((item, i) => {
+    const pos = positions[i] || { x: 50, y: 50 }
 
-    const bottom = rect.top - boxRect.top + rect.height;
+    item.style.left = pos.x + "%"
+    item.style.top = pos.y + "%"
 
-    if (bottom > maxBottom) {
-      maxBottom = bottom;
+    let t = Math.random() * 100
+
+    function float() {
+      t += 0.02
+      const x = Math.sin(t + i) * 5
+      const y = Math.cos(t + i) * 5
+
+      if (!item.classList.contains("active")) {
+        item.style.transform = `translate(${x}px, ${y}px)`
+      }
+
+      requestAnimationFrame(float)
     }
-  });
 
-  box.style.height = maxBottom + 50 + 'px';
-}
+    float()
 
-  if (!items.length || !box) return;
+    item.onmouseenter = () => {
+      items.forEach(i => i.classList.remove("active"))
+      item.classList.add("active")
+      box.classList.add("blur-active")
 
-  const positions = [];
+      const id = +item.dataset.id
+      item.querySelector(".pop-count").textContent = getCartItemCount(id)
+    }
 
-  function isFarEnough(x, y) {
-    return positions.every(pos => {
-      const dx = pos.x - x;
-      const dy = pos.y - y;
-      return Math.sqrt(dx * dx + dy * dy) > 140;
-    });
+    item.onmouseleave = () => {
+      item.classList.remove("active")
+      box.classList.remove("blur-active")
+    }
+  })
+
+  box.onclick = (e) => {
+    const plus = e.target.closest(".pop-plus")
+    const minus = e.target.closest(".pop-minus")
+    if (!plus && !minus) return
+
+    const item = e.target.closest(".pop-item")
+    const id = +item.dataset.id
+    const current = getCartItemCount(id)
+
+    if (plus) setCartItemCount(id, current + 1)
+    if (minus) setCartItemCount(id, current - 1)
+
+    item.querySelector(".pop-count").textContent = getCartItemCount(id)
   }
 
-  items.forEach(item => {
-  
-    const padding = 220;
+  syncPopularCounts()
+})
 
-    const maxX = box.clientWidth - padding;
-    const maxY = box.clientHeight - padding;
-
-    let x, y;
-    let tries = 0;
-
-    do {
-      x = Math.random() * maxX;
-      y = Math.random() * maxY;
-      tries++;
-    } while (!isFarEnough(x, y) && tries < 10);
-
-    positions.push({ x, y });
-
-    item.style.left = x + 'px';
-    item.style.top = y + 'px';
-
-
-    const duration = 3 + Math.random() * 3;
-    const delay = Math.random() * 2;
-    const amplitude = 10 + Math.random() * 15;
-
-    const animName = `float-${Math.random().toString(36).substr(2, 5)}`;
-
-    const style = document.createElement("style");
-    style.innerHTML = `
-      @keyframes ${animName} {
-        0% { transform: translateY(0px); }
-        50% { transform: translateY(-${amplitude}px); }
-        100% { transform: translateY(0px); }
-      }
-    `;
-    document.head.appendChild(style);
-
-    item.style.animation = `${animName} ${duration}s ease-in-out ${delay}s infinite`;
-
-  
-    item.addEventListener('mouseenter', () => {
-      item.classList.add('active');
-      box.classList.add('blur-active');
-    });
-
-    item.addEventListener('mouseleave', () => {
-      item.classList.remove('active');
-      box.classList.remove('blur-active');
-    });
-  });
-});
-
+// ===== INIT =====
 showProducts()
 updateCart()
-updateBoxHeight()
-
+syncPopularCounts()
