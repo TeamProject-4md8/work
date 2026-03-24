@@ -109,9 +109,9 @@ h2 {
 }
 
 .hero-text h1 {
-  font-size: 132px;
-  line-height: 0.9;
-  margin-bottom: 20px;
+  font-size: 104px;
+  line-height: 1.2;
+  margin-bottom: 40px;
   color: #EA4669;
   text-align: left;
 }
@@ -122,6 +122,8 @@ h2 {
   text-align: left;
   margin-left: 0;
   margin-right: 0;
+  font-weight: 600;
+  font-size: 18px;
 }
 
 .hero-btns {
