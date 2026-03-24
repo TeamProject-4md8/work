@@ -1,3 +1,4 @@
+```css
 @font-face {
   font-family: 'Involve';
   src: url('../font/Involve.ttf') format('truetype');
@@ -7,7 +8,7 @@
 
 body {
   margin: 0;
-  font-family: 'Involve', medium;
+  font-family: 'Involve', 'Montserrat', sans-serif;
   background: #FFFEF4;
   color: #7d3448;
 }
@@ -27,7 +28,7 @@ h1, h2 {
 }
 
 .logo span {
-  font-family: 'Lobelia', 'Involvet';
+  font-family: 'Lobelia', 'Involve';
 }
 
 h2 {
@@ -198,8 +199,6 @@ h2 {
   bottom: -20px;
 }
 
-/* ===== QUOTE ===== */
-
 .quote {
   padding: 90px 0 115px;
   position: relative;
@@ -236,17 +235,18 @@ h2 {
   text-align: left;
   font-weight: 600;
   padding: 0 30px 0 30px;
+  position: relative;
 }
 
 .quote__mark {
-  position: absolute;
-  left: 78px;
-  bottom: 70px;
   font-family: Georgia, serif;
   font-size: 82px;
   line-height: 1;
   font-weight: 700;
   color: #ef6788;
+  position: absolute;
+  left: -35px;
+  top: -15px;
 }
 
 .quote-bg-tart-left {
@@ -733,7 +733,7 @@ h2 {
 }
 
 .info-item span {
-  font-family: 'Involve', medium;
+  font-family: 'Involve', 'Montserrat', sans-serif;
   font-size: 14px;
   font-weight: 600;
   color: #7d3448;
@@ -751,8 +751,6 @@ h2 {
   height: auto;
   display: block;
 }
-
-/* ===== POPULAR PRODUCTS FINAL ===== */
 
 .popular-box {
   position: relative;
@@ -793,7 +791,7 @@ h2 {
   background: linear-gradient(180deg, #fff7d7 0%, #f3e1ab 100%);
   border: 1px solid #c8a98b;
   color: #8f363f;
-  font-family: 'Involve', medium;
+  font-family: 'Involve', 'Montserrat', sans-serif;
   font-size: 10px;
   font-weight: 700;
   text-transform: uppercase;
@@ -847,7 +845,7 @@ h2 {
 
 .hover-info h4 {
   margin: 0 0 10px;
-  font-family: 'Involve', medium;
+  font-family: 'Involve', 'Montserrat', sans-serif;
   font-weight: 800;
   font-size: 24px;
   line-height: 1.15;
@@ -856,7 +854,7 @@ h2 {
 
 .hover-info p {
   margin: 0 0 28px;
-  font-family: 'Involve', medium;
+  font-family: 'Involve', 'Montserrat', sans-serif;
   font-size: 22px;
   line-height: 1.2;
   color: #b08a95;
@@ -935,7 +933,7 @@ h2 {
 .pop-count {
   min-width: 22px;
   text-align: center;
-  font-family: 'Involve', medium;
+  font-family: 'Involve', 'Montserrat', sans-serif;
   font-size: 22px;
   font-weight: 700;
   color: #211a19;
@@ -1018,15 +1016,16 @@ h2 {
   }
 
   .quote__text {
-    max-width: 360px;
+    max-width: 420px;
     font-size: 14px;
-    line-height: 1.75;
+    line-height: 1.5;
+    padding: 0 20px;
   }
 
   .quote__mark {
-    left: 58px;
-    bottom: 56px;
     font-size: 68px;
+    left: -30px;
+    top: -12px;
   }
 
   .quote-bg-tart-left,
@@ -1114,27 +1113,29 @@ h2 {
   }
 
   .quote__bubble {
-    max-width: 340px;
-    min-height: 170px;
-    padding: 28px 34px 24px;
+    max-width: 100%;
+    min-height: auto;
+    padding: 35px 25px 30px;
     background-size: 100% 100%;
   }
 
   .quote__text {
-    max-width: 210px;
-    font-size: 11px;
-    line-height: 1.5;
+    max-width: 320px;
+    font-size: 12px;
+    line-height: 1.4;
+    padding: 0 15px;
+    margin: 0 auto;
   }
 
   .quote__mark {
-    left: 34px;
-    bottom: 26px;
-    font-size: 42px;
+    font-size: 48px;
+    left: -25px;
+    top: -8px;
   }
 
   .quote-bg-tart-left,
   .quote-bg-tart-right {
-    width: 120px;
+    width: 100px;
   }
 
   .quote-bg-tart-left {
@@ -1199,3 +1200,69 @@ h2 {
     font-size: 18px;
   }
 }
+
+@media (max-width: 576px) {
+  .quote {
+    padding: 35px 0 45px;
+  }
+
+  .quote__container {
+    padding: 0 12px;
+  }
+
+  .quote__bubble {
+    padding: 28px 20px 24px;
+  }
+
+  .quote__text {
+    max-width: 260px;
+    font-size: 11px;
+    line-height: 1.35;
+    padding: 0 10px;
+  }
+
+  .quote__mark {
+    font-size: 42px;
+    left: -20px;
+    top: -6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .quote {
+    padding: 25px 0 35px;
+  }
+
+  .quote__bubble {
+    padding: 22px 15px 20px;
+  }
+
+  .quote__text {
+    max-width: 220px;
+    font-size: 10px;
+    line-height: 1.3;
+    padding: 0 8px;
+  }
+
+  .quote__mark {
+    font-size: 36px;
+    left: -18px;
+    top: -5px;
+  }
+}
+
+@media (max-width: 375px) {
+  .quote__text {
+    max-width: 180px;
+    font-size: 9px;
+    line-height: 1.25;
+    padding: 0 5px;
+  }
+
+  .quote__mark {
+    font-size: 28px;
+    left: -15px;
+    top: -4px;
+  }
+}
+```
