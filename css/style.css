@@ -7,7 +7,7 @@
 
 body {
   margin: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Involve', medium;
   background: #FFFEF4;
   color: #7d3448;
 }
@@ -23,11 +23,11 @@ a {
 }
 
 h1, h2 {
-  font-family: 'Lobelia', 'Montserrat', sans-serif;
+  font-family: 'Lobelia', 'Involve';
 }
 
 .logo span {
-  font-family: 'Lobelia', 'Montserrat', sans-serif;
+  font-family: 'Lobelia', 'Involvet';
 }
 
 h2 {
@@ -72,7 +72,6 @@ h2 {
 }
 
 .menu a {
-  font-family: 'Montserrat', sans-serif;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -224,7 +223,7 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
+  text-align: left;
   box-sizing: border-box;
 }
 
@@ -312,7 +311,6 @@ h2 {
 }
 
 .card-simple h3 {
-  font-family: 'Montserrat', sans-serif;
   font-size: 14px;
   margin-bottom: 10px;
   text-transform: uppercase;
@@ -344,14 +342,12 @@ h2 {
 }
 
 .pop-item h4 {
-  font-family: 'Montserrat', sans-serif;
   font-weight: 800;
   font-size: 16px;
   margin-bottom: 5px;
 }
 
 .pop-item p {
-  font-family: 'Montserrat', sans-serif;
   font-size: 12px;
   margin: 5px 0;
 }
@@ -368,7 +364,6 @@ h2 {
 }
 
 .main-card h3 {
-  font-family: 'Montserrat', sans-serif;
   font-size: 18px;
   margin: 15px 0 10px;
   font-weight: 800;
@@ -408,7 +403,6 @@ h2 {
   padding: 10px 18px;
   border-radius: 25px;
   cursor: pointer;
-  font-family: 'Montserrat', sans-serif;
   font-weight: 600;
   color: #0C0C0C;
   transition: all 0.3s ease;
@@ -449,14 +443,12 @@ h2 {
 }
 
 .item h3 {
-  font-family: 'Montserrat', sans-serif;
   font-size: 16px;
   min-height: 40px;
   font-weight: 700;
 }
 
 .item p {
-  font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   font-size: 18px;
   color: #ef5a84;
@@ -468,7 +460,6 @@ h2 {
   color: #FFFFFF;
   padding: 10px 18px;
   border-radius: 20px;
-  font-family: 'Montserrat', sans-serif;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -510,13 +501,11 @@ h2 {
   padding: 10px 14px;
   border-radius: 12px;
   margin-bottom: 10px;
-  font-family: 'Montserrat', sans-serif;
 }
 
 .cart-total {
   font-size: 20px;
   font-weight: 700;
-  font-family: 'Montserrat', sans-serif;
 }
 
 .cart-right form {
@@ -529,11 +518,11 @@ h2 {
   border: none;
   padding: 12px 14px;
   border-radius: 10px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Involve';
 }
 
 .cart-right button {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Involve';
   font-weight: 700;
   background: #FFF7CD;
   color: #8F363F;
@@ -605,14 +594,14 @@ h2 {
 }
 
 .contact-card h3 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Involve';
   font-weight: 800;
   font-size: 18px;
   margin-bottom: 15px;
 }
 
 .contact-card p {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Involve';
   font-size: 14px;
   line-height: 1.5;
 }
@@ -633,11 +622,11 @@ h2 {
 }
 
 .footer-box .logo span {
-  font-family: 'Lobelia', 'Montserrat', sans-serif;
+  font-family: 'Lobelia', 'Involve';
 }
 
 .footer-box p {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Involve';
   margin-top: 15px;
 }
 
@@ -708,7 +697,7 @@ h2 {
 }
 
 .info-card-content h3 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Involve';
   font-size: 28px;
   font-weight: 800;
   color: #7d3448;
@@ -717,7 +706,7 @@ h2 {
 }
 
 .info-card-condition {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Involve';
   font-size: 18px;
   font-weight: 600;
   color: #ef5a84;
@@ -743,7 +732,7 @@ h2 {
 }
 
 .info-item span {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Involve', medium;
   font-size: 14px;
   font-weight: 600;
   color: #7d3448;
@@ -803,7 +792,7 @@ h2 {
   background: linear-gradient(180deg, #fff7d7 0%, #f3e1ab 100%);
   border: 1px solid #c8a98b;
   color: #8f363f;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Involve', medium;
   font-size: 10px;
   font-weight: 700;
   text-transform: uppercase;
@@ -857,7 +846,7 @@ h2 {
 
 .hover-info h4 {
   margin: 0 0 10px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Involve', medium;
   font-weight: 800;
   font-size: 24px;
   line-height: 1.15;
@@ -866,7 +855,7 @@ h2 {
 
 .hover-info p {
   margin: 0 0 28px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Involve', medium;
   font-size: 22px;
   line-height: 1.2;
   color: #b08a95;
@@ -945,7 +934,7 @@ h2 {
 .pop-count {
   min-width: 22px;
   text-align: center;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Involve', medium;
   font-size: 22px;
   font-weight: 700;
   color: #211a19;
