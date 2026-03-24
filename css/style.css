@@ -73,7 +73,7 @@ h2 {
 
 .menu a {
   font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   color: #8F363F;
@@ -81,7 +81,7 @@ h2 {
 }
 
 .menu a:hover {
-  color: #FFF7CD;
+  color: #FFFFFF;
 }
 
 .menu a:active {
@@ -111,7 +111,7 @@ h2 {
 .hero-text h1 {
   font-size: 104px;
   line-height: 1.2;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   color: #EA4669;
   text-align: left;
 }
