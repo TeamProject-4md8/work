@@ -61,15 +61,15 @@ h2 {
 }
 
 .logo img {
-  width: 34px;
-  height: 34px;
+  width: 48px;
+  height: 48px;
   object-fit: contain;
 }
 
 .menu {
   display: flex;
-  gap: 25px;
-  font-size: 14px;
+  gap: 30px;
+  font-size: 16px;
 }
 
 .menu a {
@@ -81,7 +81,7 @@ h2 {
 }
 
 .menu a:hover {
-  color: #FFFFFF;
+  transform: scale(1.15);
 }
 
 .menu a:active {
@@ -251,18 +251,18 @@ h2 {
 
 .quote-bg-tart-left {
   position: absolute;
-  width: 230px;
+  width: 350px;
   left: -18px;
-  top: 48%;
+  top: 30%;
   transform: translateY(-50%);
   z-index: 1;
 }
 
 .quote-bg-tart-right {
   position: absolute;
-  width: 230px;
+  width: 450px;
   right: -14px;
-  top: 52%;
+  top: 60%;
   transform: translateY(-50%);
   z-index: 1;
 }
@@ -665,15 +665,14 @@ h2 {
 }
 
 .social-icon {
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
   object-fit: contain;
   transition: all 0.3s ease;
 }
 
 .social-link:hover .social-icon {
-  transform: scale(1.1);
-  filter: brightness(0) saturate(100%) invert(27%) sepia(89%) saturate(250%) hue-rotate(320deg) brightness(95%) contrast(95%);
+  transform: scale(1.3);
 }
 
 .info-card {
@@ -1264,5 +1263,6 @@ h2 {
     left: -15px;
     top: -4px;
   }
+  
 }
 ```
