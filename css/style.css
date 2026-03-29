@@ -852,49 +852,32 @@ h2 {
 }
 
 .hover-bottom {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 18px;
+  align-items: center;
 }
 
 .hover-card .price {
-  display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 10px;
+  gap: 6px;
 }
 
 .hover-card .price .old {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 92px;
-  height: 44px;
-  padding: 0 14px;
-  border-radius: 999px;
-  background: #f3dce2;
-  color: #a7a7a7;
-  font-size: 26px;
-  font-weight: 700;
+  background: none;
   text-decoration: line-through;
+  font-size: 18px;
+  color: #222;
+  height: auto;
+  min-width: auto;
+  padding: 0;
 }
 
 .hover-card .price .new {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 144px;
-  height: 62px;
-  padding: 0 24px;
-  border-radius: 24px;
-  background: #ffd9e4;
-  color: #ff4f7a;
-  font-size: 48px;
-  font-weight: 800;
-  line-height: 1;
+  background: none;
+  font-size: 44px;
+  color: #e5486b;
+  padding: 0;
+  height: auto;
 }
-
 .pop-controls {
   display: flex;
   align-items: center;
@@ -902,19 +885,12 @@ h2 {
 }
 
 .pop-controls button {
-  width: 34px;
-  height: 34px;
-  border: none;
-  border-radius: 50%;
-  background: #ea4669;
-  color: #ffffff;
-  font-size: 22px;
-  font-weight: 700;
-  line-height: 1;
-  cursor: pointer;
-  transition: transform 0.2s ease, background 0.2s ease;
-  pointer-events: auto;
+  width: 40px;
+  height: 40px;
+  background: #e5486b;
+  font-size: 20px;
 }
+
 
 .pop-controls button:hover {
   transform: scale(1.07);
@@ -922,12 +898,7 @@ h2 {
 }
 
 .pop-count {
-  min-width: 22px;
-  text-align: center;
-  font-family: 'Involve', 'Montserrat', sans-serif;
-  font-size: 22px;
-  font-weight: 700;
-  color: #211a19;
+  font-size: 18px;
 }
 
 .pop-item.active {
