@@ -1,21 +1,18 @@
-const supabaseUrl = 'https://oivswyxszlbvkduuhdqd.supabase.co'
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9pdnN3eXhzemxidmtkdXVoZHFkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM2MjcwMTksImV4cCI6MjA4OTIwMzAxOX0.qDqMN9ZjRhDUmjJRrN8FXOrgmQR_S9TM7o3Zuw4qp98'
-const supabaseClient = window.supabase.createClient(supabaseUrl, supabaseKey)
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm"
+	
+const supabaseUrl = 'https://pwykgseanhuvaaxhmsaz.supabase.co'
+const supabaseKey = 'sb_publishable_XydslCojK5a8utYzRFj2ag_1i9WIoSM'
+const supabaseClient = createClient(supabaseUrl, supabaseKey)
 
 // ===== ПРОДУКТЫ =====
-const products = [
-  { id: 1, name: "Сливки для торта", category: "cream", price: 750, image: "img/Rectangle 186-2.png" },
-  { id: 2, name: "Клубничная глазурь", category: "fillings", price: 110, image: "img/Rectangle 186.png" },
-  { id: 3, name: "Начинка Ириска", category: "fillings", price: 620, image: "img/Rectangle 186-1.png" },
-  { id: 4, name: "Конфитюр малина", category: "jams", price: 450, image: "img/Rectangle 187.png" },
-  { id: 5, name: "Фисташковый круассан", category: "croissants", price: 499, image: "img/freepik__-__30101 3.png" },
-  { id: 6, name: "Круассан с розой", category: "croissants", price: 519, image: "img/freepik__-__30100 3.png" }
-]
+var products = []
+var categories = []
 
 // ===== DOM =====
 const catalogList = document.getElementById("catalogList")
-const filterButtons = document.querySelectorAll(".filter-btn")
+const filterButtons = [...document.querySelectorAll(".filter-btn")]
 const cartItems = document.getElementById("cartItems")
+const filters = document.getElementById("filters")
 const totalPrice = document.getElementById("totalPrice")
 const orderForm = document.getElementById("orderForm")
 const message = document.getElementById("message")
@@ -29,28 +26,52 @@ function showProducts(category = "all") {
 
   let filtered = category === "all"
     ? products
-    : products.filter(p => p.category === category)
+    : products.filter(p => p.id_type_product.toString() === category)
 
   filtered.forEach(product => {
     const card = document.createElement("div")
     card.className = "item"
 
     card.innerHTML = `
-      <img src="${product.image}">
-      <h3>${product.name}</h3>
-      <p>${product.price} ₽</p>
+      <img src="${product.product_image}">
+      <h3>${product.product_name}</h3>
+      <p>${product.product_price} ₽</p>
       <button>В корзину</button>
     `
 
-    card.querySelector("button").onclick = () => addToCart(product.id)
+    card.querySelector("button").onclick = () => addToCart(product.id_product)
     catalogList.appendChild(card)
   })
 }
 
+// ===== ФИЛЬТРЫ =====
+function setupFilters(){
+	filterButtons.forEach(btn => {
+	  btn.onclick = () => {
+		filterButtons.forEach(b => b.classList.remove("active"))
+		btn.classList.add("active")
+		showProducts(btn.dataset.filter)
+	  }
+	})
+}
+
+function showCategories() {
+	
+	categories.forEach(category => {
+		const card = document.createElement("button")
+		card.className = "filter-btn"
+		card.dataset.filter = category.id_type_product
+		card.innerHTML = category.product_type_name
+		filterButtons.push(card)
+		filters.appendChild(card)
+	})
+	setupFilters()
+}
+
 // ===== КОРЗИНА =====
 function addToCart(id) {
-  const product = products.find(p => p.id === id)
-  const found = cart.find(p => p.id === id)
+  const product = products.find(p => p.id_product === id)
+  const found = cart.find(p => p.id_product === id)
 
   if (found) {
     found.count++
@@ -75,7 +96,7 @@ function updateCart() {
   cartItems.innerHTML = ""
 
   cart.forEach(item => {
-    total += item.price * item.count
+    total += item.product_price * item.count
 
     const row = document.createElement("div")
     row.className = "cart-row"
@@ -87,16 +108,16 @@ function updateCart() {
 }
 
 function getCartItemCount(id) {
-  const item = cart.find(p => p.id === id)
+  const item = cart.find(p => p.id_product === id)
   return item ? item.count : 0
 }
 
 function setCartItemCount(id, count) {
-  const product = products.find(p => p.id === id)
-  const found = cart.find(p => p.id === id)
+  const product = products.find(p => p.id_product === id)
+  const found = cart.find(p => p.id_product === id)
 
   if (count <= 0) {
-    cart = cart.filter(p => p.id !== id)
+    cart = cart.filter(p => p.id_product !== id)
   } else if (found) {
     found.count = count
   } else {
@@ -115,14 +136,6 @@ function syncPopularCounts() {
   })
 }
 
-// ===== ФИЛЬТРЫ =====
-filterButtons.forEach(btn => {
-  btn.onclick = () => {
-    filterButtons.forEach(b => b.classList.remove("active"))
-    btn.classList.add("active")
-    showProducts(btn.dataset.filter)
-  }
-})
 
 // ===== ОТПРАВКА =====
 if (orderForm) {
@@ -135,26 +148,36 @@ if (orderForm) {
     }
 
     const formData = new FormData(orderForm)
+	const rawPhone = formData.get("phone");
+	const phoneNumber = rawPhone.replace(/\D/g, "");
+
+	const phoneRegex = /^\d+$/;
+
+	if (!phoneRegex.test(phoneNumber)) {
+	  message.textContent = "Неправильный номер";
+	  return;
+	}
+
 
     const order = {
-      name: formData.get("name"),
-      phone: formData.get("phone"),
-      email: formData.get("email"),
-      address: formData.get("address"),
-      comment: formData.get("comment"),
-      total_price: cart.reduce((s, i) => s + i.price * i.count, 0),
-      delivery_price: 350
+      customer_name: formData.get("name"),
+      customer_phone_number: phoneNumber,
+      customer_email: formData.get("email"),
+      order_address: formData.get("address"),
+      order_comment: formData.get("comment"),
+      price_order: cart.reduce((s, i) => s + i.product_price * i.count, 0),
+      price_delivery: 350
     }
 
-    const { data, error } = await supabaseClient.from("orders").insert([order]).select()
+    const { data, error } = await supabaseClient.from("Order").insert([order]).select()
     if (error) return
 
     await supabaseClient.from("order_items").insert(
       cart.map(i => ({
-        order_id: data[0].id,
-        product_id: i.id,
-        product_name: i.name,
-        price: i.price,
+        order_id: data[0].id_order,
+        product_id: i.id_product,
+        product_name: i.product_name,
+        price: i.product_price,
         quantity: i.count
       }))
     )
@@ -238,6 +261,37 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 // ===== INIT =====
-showProducts()
-updateCart()
-syncPopularCounts()
+async function fetchCategories() {
+  
+    const { data, error } = await supabaseClient
+    .from('product_type')
+    .select('*')
+
+  if (error) {
+    console.error('Error:', error)
+    return
+  }
+
+  data.forEach(p => categories.push(p))
+  
+	showCategories()
+	showProducts()
+	updateCart()
+	syncPopularCounts()
+}
+
+async function fetchData() {
+  const { data, error } = await supabaseClient
+    .from('Product')
+    .select('*')
+
+  if (error) {
+    console.error('Error:', error)
+    return
+  }
+
+  data.forEach(p => products.push(p))
+	fetchCategories()
+}
+
+fetchData()
