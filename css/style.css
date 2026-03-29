@@ -786,7 +786,7 @@ h2 {
   transform: translateX(-50%) rotate(-7deg);
   display: inline-flex;
   font-family: 'Involve', 'Montserrat', sans-serif;
-  font-size: 10px;
+  font-size: 20px;
   font-weight: 700;
   text-transform: uppercase;
   white-space: nowrap;
@@ -797,8 +797,9 @@ h2 {
   content: "";
   position: absolute;
   inset: 3px;
-
-  border-radius: 999px;
+  background: #fff;
+  border-radius: 33px;
+  z-index: -1;
 }
 
 .hover-card {
