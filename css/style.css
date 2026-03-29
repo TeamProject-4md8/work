@@ -785,7 +785,11 @@ h2 {
   bottom: 10px;
   transform: translateX(-50%) rotate(-7deg);
   display: inline-flex;
-
+  font-family: 'Involve', 'Montserrat', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  white-space: nowrap;
   z-index: 3;
 }
 
