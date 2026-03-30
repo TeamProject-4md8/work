@@ -336,9 +336,7 @@ h2 {
 .pop-item span {
   display: inline-block;
   margin-top: 10px;
-  background: #f7d9e1;
-  padding: 6px 14px;
-  border-radius: 20px;
+
   font-size: 12px;
 }
 
@@ -375,9 +373,7 @@ h2 {
 }
 
 .price {
-  display: flex;
-  gap: 12px;
-  align-items: end;
+  align-items:flex-start;
 }
 
 .old {
@@ -731,6 +727,21 @@ h2 {
   gap: 15px;
 }
 
+.info-hover-name-product {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.hover-name-product {
+  font-size: 20px;
+}
+
+.p-weight {
+  font-size: 10px;
+}
+
 .info-icon {
   width: 40px;
   height: 40px;
@@ -804,6 +815,11 @@ h2 {
   z-index: -1;
 }
 
+.hover-info-name {
+  display: flex;
+  justify-content: space-between;
+}
+
 .hover-card {
   position: absolute;
   left: 50%;
@@ -812,7 +828,7 @@ h2 {
   min-height: 430px;
   padding: 28px 22px 22px;
   border-radius: 34px;
-  background: #fbfaf7;
+  background: #FFFEF4;
   border: 1.5px solid rgba(33, 26, 25, 0.65);
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.08);
   opacity: 0;
@@ -834,6 +850,7 @@ h2 {
 
 .hover-info {
   text-align: center;
+  justify-content: space-between;
 }
 
 .hover-info h4 {
@@ -846,21 +863,23 @@ h2 {
 }
 
 .hover-info p {
-  margin: 0 0 28px;
+
   font-family: 'Involve', 'Montserrat', sans-serif;
-  font-size: 22px;
+  font-size: 15px;
   line-height: 1.2;
   color: #b08a95;
 }
 
 .hover-bottom {
-  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  
 }
 
 .hover-card .price {
   flex-direction: column;
   align-items: flex-start;
-  gap: 6px;
+  
 }
 
 .hover-card .price .old {
@@ -883,13 +902,16 @@ h2 {
 .pop-controls {
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: space-between;
+  gap: 15px;
 }
 
 .pop-controls button {
   width: 40px;
   height: 40px;
   background: #e5486b;
+  border: none;
+  border-radius:100%;
   font-size: 20px;
 }
 
@@ -900,7 +922,7 @@ h2 {
 }
 
 .pop-count {
-  font-size: 18px;
+  font-size: 20px;
 }
 
 .pop-item.active {
