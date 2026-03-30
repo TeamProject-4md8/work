@@ -899,11 +899,11 @@ h2 {
   padding: 0;
   height: auto;
 }
+
 .pop-controls {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 15px;
+  gap: 12px;
 }
 
 .pop-controls button {
@@ -912,9 +912,8 @@ h2 {
   background: #e5486b;
   border: none;
   border-radius:100%;
-  font-size: 20px;
+  font-size: 24px;
 }
-
 
 .pop-controls button:hover {
   transform: scale(1.07);
@@ -1179,11 +1178,11 @@ h2 {
   .pop-controls button {
     width: 30px;
     height: 30px;
-    font-size: 18px;
+    font-size: 24px;
   }
 
   .pop-count {
-    font-size: 18px;
+    font-size: 24px;
   }
 }
 
