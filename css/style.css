@@ -467,8 +467,8 @@ h2 {
 }
 
 .item button:hover {
-  background: #FFF7CD;
-  color: #8F363F;
+  background: #0C0C0C;
+  color: #FFF7CD;
   transform: scale(1.05);
 }
 
@@ -611,7 +611,7 @@ h2 {
 }
 
 .footer {
-  background: #FFF7CD;
+  background: #e8da97;
   margin-top: 40px;
 }
 
