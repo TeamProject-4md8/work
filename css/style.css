@@ -10,7 +10,7 @@ body {
   margin: 0;
   font-family: 'Involve', 'Montserrat', sans-serif;
   background: #FFFEF4;
-  color: #7d3448;
+  color: #8F363F;
 }
 
 img {
@@ -143,7 +143,7 @@ h2 {
 }
 
 .pink-btn {
-  background: #ef5a84;
+  background: #EA4669;
   color: white;
 }
 
@@ -154,12 +154,12 @@ h2 {
 
 .pink-btn:active {
   background: #0C0C0C;
-  color: #FFF8B9;
+  color: #FFF7CD;
 }
 
 .cream-btn {
   background: #f0e3aa;
-  color: #7d3448;
+  color: #8F363F;
   border: none;
 }
 
@@ -170,7 +170,7 @@ h2 {
 
 .cream-btn:active {
   background: #0C0C0C;
-  color: #FFF8B9;
+  color: #FFF7CD;
 }
 
 .hero-img {
@@ -243,7 +243,7 @@ h2 {
   font-size: 82px;
   line-height: 1;
   font-weight: 700;
-  color: #ef6788;
+  color: #EA4669;
   position: absolute;
   left: -35px;
   top: -15px;
@@ -325,12 +325,12 @@ h2 {
 }
 
 .card-simple.pink {
-  background: #ef5a84;
+  background: #EA4669;
   color: white;
 }
 
 .card-simple.cream {
-  background: #f5efc7;
+  background: #FFF7CD;
 }
 
 .pop-item span {
@@ -354,7 +354,7 @@ h2 {
 .main-card {
   width: 340px;
   background: #fcfbf7;
-  border: 1px solid #cfb18a;
+  border: 1px solid #FFF7CD;
   border-radius: 25px;
   padding: 25px;
   position: absolute;
@@ -384,7 +384,7 @@ h2 {
 .new {
   font-size: 32px;
   font-weight: 800;
-  color: #ef5a84;
+  color: #EA4669;
 }
 
 .filters {
@@ -416,7 +416,7 @@ h2 {
 }
 
 .filter-btn.active {
-  background: #ef5a84;
+  background: #EA4669;
   color: white;
 }
 
@@ -474,12 +474,12 @@ h2 {
 
 .item button:active {
   background: #0C0C0C;
-  color: #FFF8B9;
+  color: #FFF7CD;
   transform: scale(0.98);
 }
 
 .cart-box {
-  background: #ef5a84;
+  background: #EA4669;
   border-radius: 20px;
   padding: 30px;
   display: flex;
@@ -542,7 +542,7 @@ h2 {
 
 .cart-right button:active {
   background: #0C0C0C;
-  color: #FFF8B9;
+  color: #FFF7CD;
   transform: scale(0.98);
 }
 
@@ -587,18 +587,21 @@ h2 {
 }
 
 .contact-card {
-  background: #ffd7e2;
+  background: #EA4669;
   padding: 20px;
   border-radius: 18px;
   flex: 1;
   min-width: 220px;
+  color: white;
+  
 }
 
 .contact-card h3 {
   font-family: 'Involve';
-  font-weight: 800;
+  font-weight: 600;
   font-size: 18px;
   margin-bottom: 15px;
+  color: white;
 }
 
 .contact-card p {
@@ -608,7 +611,7 @@ h2 {
 }
 
 .footer {
-  background: #efe1aa;
+  background: #FFF7CD;
   margin-top: 40px;
 }
 
@@ -650,7 +653,7 @@ h2 {
   background: none;
   font-size: 28px;
   font-weight: bold;
-  color: #ff4f7a;
+  color: #EA4669;
 }
 
 .social-icons {
@@ -682,7 +685,7 @@ h2 {
 }
 
 .info-card-box {
-  background: #f0e3aa;
+  background: #FFF7CD;
   border-radius: 30px;
   padding: 40px;
   position: relative;
@@ -702,7 +705,7 @@ h2 {
   font-family: 'Involve';
   font-size: 28px;
   font-weight: 800;
-  color: #7d3448;
+  color: #8F363F;
   margin-bottom: 10px;
   text-transform: uppercase;
 }
@@ -711,7 +714,7 @@ h2 {
   font-family: 'Involve';
   font-size: 18px;
   font-weight: 600;
-  color: #ef5a84;
+  color: #EA4669;
   margin-bottom: 30px;
 }
 
@@ -752,7 +755,7 @@ h2 {
   font-family: 'Involve', 'Montserrat', sans-serif;
   font-size: 14px;
   font-weight: 600;
-  color: #7d3448;
+  color: #8F363F;
   line-height: 1.4;
 }
 
@@ -895,29 +898,30 @@ h2 {
 .hover-card .price .new {
   background: none;
   font-size: 44px;
-  color: #e5486b;
+  color: #EA4669;
   padding: 0;
   height: auto;
 }
-
 .pop-controls {
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: space-between;
+  gap: 15px;
 }
 
 .pop-controls button {
   width: 40px;
   height: 40px;
-  background: #e5486b;
+  background: #EA4669;
   border: none;
   border-radius:100%;
-  font-size: 24px;
+  font-size: 20px;
 }
+
 
 .pop-controls button:hover {
   transform: scale(1.07);
-  background: #d93a5d;
+  background: #EA4669;
 }
 
 .pop-count {
@@ -1178,11 +1182,11 @@ h2 {
   .pop-controls button {
     width: 30px;
     height: 30px;
-    font-size: 24px;
+    font-size: 18px;
   }
 
   .pop-count {
-    font-size: 24px;
+    font-size: 18px;
   }
 }
 
