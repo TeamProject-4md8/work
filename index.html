@@ -13,29 +13,35 @@
 <body>
 
   <header class="header">
-    <div class="container head">
-      <div class="logo">
-        <img src="img/Union.png" alt="Логотип">
-      </div>
-
-      <nav class="menu">
-        <a href="#about">О нас</a>
-        <a href="#popular">Популярное</a>
-        <a href="#catalog">Каталог</a>
-        <a href="#cart">Корзина</a>
-        <a href="#contacts">Контакты</a>
-      </nav>
-
-      <div class="social-icons">
-        <a href="https://vk.com/" target="_blank" class="social-link">
-          <img src="img/vk.svg" alt="VK" class="social-icon">
-        </a>
-        <a href="https://t.me/" target="_blank" class="social-link">
-          <img src="img/tg.svg" alt="Telegram" class="social-icon">
-        </a>
-      </div>
+  <div class="container head">
+    <div class="logo">
+      <img src="img/Union.png" alt="Логотип">
     </div>
-  </header>
+
+    <button class="burger-menu" id="burgerMenu" aria-label="Меню">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="menu" id="menu">
+      <a href="#about">О нас</a>
+      <a href="#popular">Популярное</a>
+      <a href="#catalog">Каталог</a>
+      <a href="#cart">Корзина</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+
+    <div class="social-icons">
+      <a href="https://vk.com/" target="_blank" class="social-link">
+        <img src="img/vk.svg" alt="VK" class="social-icon">
+      </a>
+      <a href="https://t.me/" target="_blank" class="social-link">
+        <img src="img/tg.svg" alt="Telegram" class="social-icon">
+      </a>
+    </div>
+  </div>
+</header>
 
   <section class="hero">
     <div class="container hero-box">
@@ -48,25 +54,25 @@
     </div>
   </section>
 
-<section class="quote">
-  <img class="quote-bg-tart-left" src="img/freepik__-__30096 2.png" alt="">
-  <img class="quote-bg-tart-right" src="img/freepik__-__30096 1.png" alt="">
+  <section class="quote">
+    <img class="quote-bg-tart-left" src="img/freepik__-__30096 2.png" alt="">
+    <img class="quote-bg-tart-right" src="img/freepik__-__30096 1.png" alt="">
 
-  <div class="container quote__container">
-    <div class="quote__bubble">
-      <div class="quote__text">
-        <span class="quote__mark">“</span>
-        Я занимаюсь профессиональной выпечкой тортов уже более 15 лет.
-        На своём опыте знаю, в момент процесса выпечки всегда не вовремя
-        заканчивается нужный краситель, ломается фигурка, рассыпается смесь.
+    <div class="container quote__container">
+      <div class="quote__bubble">
+        <div class="quote__text">
+          <span class="quote__mark">“</span>
+          Я занимаюсь профессиональной выпечкой тортов уже более 15 лет.
+          На своём опыте знаю, в момент процесса выпечки всегда не вовремя
+          заканчивается нужный краситель, ломается фигурка, рассыпается смесь.
 
-        <br><br>
+          <br><br>
 
-        Где кондитеру найти товары поздним вечером, ночью или рано утром? У нас!
+          Где кондитеру найти товары поздним вечером, ночью или рано утром? У нас!
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
   <section class="about" id="about">
     <div class="container">
@@ -116,7 +122,7 @@
               <span>ДОСТАВКА КУРЬЕРСКОЙ СЛУЖБОЙ<br>По СПб и ЛО 24 часа</span>
             </div>
             <div class="info-item">
-              <img src="img/Сlock.svg" alt="Круглосуточно" class="info-icon">
+              <img src="img/Clock.svg" alt="Круглосуточно" class="info-icon">
               <span>Принимаем заказы круглосуточно</span>
             </div>
           </div>
@@ -128,207 +134,150 @@
     </div>
   </section>
 
-<section class="popular" id="popular">
-  <div class="container">
-    <h2>Популярные товары</h2>
+  <section class="popular" id="popular">
+    <div class="container">
+      <h2>Популярные товары</h2>
 
-    <div class="popular-box">
-
-  <!-- 1 -->
-  <div class="pop-item" data-id="5" data-name="Фисташковый круассан" data-price="499" data-old-price="560" data-weight="450 г / 4 шт.">
-    <div class="discount-badge">скидки 500 руб</div>
-    <img class="pop-thumb" src="img/freepik__-__30101 3.png" alt="Фисташковый круассан">
-
-    <div class="hover-card">
-      <img class="hover-product-image" src="img/freepik__-__30101 3.png">
-
-      <div class="hover-info">
-        <div class="info-hover-name-product">
-          <div class="hover-name-product">Фисташковый</div>
-          <p>450 г / 4 шт.</p>
-        </div>
-
-        <div class="hover-bottom">
-          <div class="price">
-            <span class="new">499</span>
-            <span class="old">560</span>
-          </div>
-
-          <div class="pop-controls">
-            <button class="pop-minus" type="button">-</button>
-            <span class="pop-count">0</span>
-            <button class="pop-plus" type="button">+</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 2 -->
-  <div class="pop-item" data-id="2" data-name="Клубничная глазурь" data-price="110" data-old-price="160" data-weight="110 р./кг.">
-    <div class="discount-badge">скидки 500 руб</div>
-    <img class="pop-thumb" src="img/Rectangle 186.png">
-
-    <div class="hover-card">
-      <img class="hover-product-image" src="img/Rectangle 186.png">
-
-      <div class="hover-info">
-        <div class="info-hover-name-product">
-          <div class="hover-name-product">Клубничная глазурь</div>
-          <p>110 р./кг.</p>
-        </div>
-
-        <div class="hover-bottom">
-          <div class="price">
-            <span class="new">110</span>
-            <span class="old">160</span>
-          </div>
-
-          <div class="pop-controls">
-            <button class="pop-minus">-</button>
-            <span class="pop-count">0</span>
-            <button class="pop-plus">+</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-      <div class="pop-item" data-id="1" data-name="Сливки для торта" data-price="750" data-old-price="890" data-weight="750 р./кг.">
-        <div class="discount-badge">скидки 500 руб</div>
-        <img class="pop-thumb" src="img/Rectangle 186-2.png" alt="Сливки для торта">
-
-        <div class="hover-card">
-          <img class="hover-product-image" src="img/Rectangle 186-2.png" alt="Сливки для торта">
-          <div class="hover-info">
-            
-            <div class="info-hover-name-product">
-
-            <div class="hover-name-product">Сливочный</div>
-            <p>750 р./кг.</p>
+      <div class="popular-box">
+        <!-- 1 -->
+        <div class="pop-item" data-id="5" data-name="Фисташковый круассан" data-price="499" data-old-price="560" data-weight="450 г / 4 шт.">
+          <div class="discount-badge">скидки 500 руб</div>
+          <img class="pop-thumb" src="img/freepik__-__30101 3.png" alt="Фисташковый круассан">
+          <div class="hover-card">
+            <img class="hover-product-image" src="img/freepik__-__30101 3.png">
+            <div class="hover-info">
+              <div class="info-hover-name-product">
+                <div class="hover-name-product">Фисташковый</div>
+                <p>450 г / 4 шт.</p>
               </div>
-
-            <div class="hover-bottom">
-              <div class="price">
-                <span class="new">750</span>
-                <span class="old">890</span>
-                
+              <div class="hover-bottom">
+                <div class="price">
+                  <span class="new">499</span>
+                  <span class="old">560</span>
+                </div>
+                <div class="pop-controls">
+                  <button class="pop-minus" type="button">-</button>
+                  <span class="pop-count">0</span>
+                  <button class="pop-plus" type="button">+</button>
+                </div>
               </div>
+            </div>
+          </div>
+        </div>
 
-              <div class="pop-controls">
-                <button class="pop-minus" type="button">-</button>
-                <span class="pop-count">0</span>
-                <button class="pop-plus" type="button">+</button>
+        <!-- 2 -->
+        <div class="pop-item" data-id="2" data-name="Клубничная глазурь" data-price="110" data-old-price="160" data-weight="110 р./кг.">
+          <div class="discount-badge">скидки 500 руб</div>
+          <img class="pop-thumb" src="img/Rectangle 186.png">
+          <div class="hover-card">
+            <img class="hover-product-image" src="img/Rectangle 186.png">
+            <div class="hover-info">
+              <div class="info-hover-name-product">
+                <div class="hover-name-product">Клубничная глазурь</div>
+                <p>110 р./кг.</p>
+              </div>
+              <div class="hover-bottom">
+                <div class="price">
+                  <span class="new">110</span>
+                  <span class="old">160</span>
+                </div>
+                <div class="pop-controls">
+                  <button class="pop-minus">-</button>
+                  <span class="pop-count">0</span>
+                  <button class="pop-plus">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="pop-item" data-id="1" data-name="Сливки для торта" data-price="750" data-old-price="890" data-weight="750 р./кг.">
+          <div class="discount-badge">скидки 500 руб</div>
+          <img class="pop-thumb" src="img/Rectangle 186-2.png" alt="Сливки для торта">
+          <div class="hover-card">
+            <img class="hover-product-image" src="img/Rectangle 186-2.png" alt="Сливки для торта">
+            <div class="hover-info">
+              <div class="info-hover-name-product">
+                <div class="hover-name-product">Сливочный</div>
+                <p>750 р./кг.</p>
+              </div>
+              <div class="hover-bottom">
+                <div class="price">
+                  <span class="new">750</span>
+                  <span class="old">890</span>
+                </div>
+                <div class="pop-controls">
+                  <button class="pop-minus" type="button">-</button>
+                  <span class="pop-count">0</span>
+                  <button class="pop-plus" type="button">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 -->
+        <div class="pop-item" data-id="4" data-name="Конфитюр малина" data-price="450" data-old-price="500" data-weight="450 р./кг.">
+          <div class="discount-badge">скидки 500 руб</div>
+          <img class="pop-thumb" src="img/Rectangle 187.png">
+          <div class="hover-card">
+            <img class="hover-product-image" src="img/Rectangle 187.png">
+            <div class="hover-info">
+              <div class="info-hover-name-product">
+                <div class="hover-name-product">Конфитюр малина</div>
+                <p>450 р./кг.</p>
+              </div>
+              <div class="hover-bottom">
+                <div class="price">
+                  <span class="new">450</span>
+                  <span class="old">500</span>
+                </div>
+                <div class="pop-controls">
+                  <button class="pop-minus">-</button>
+                  <span class="pop-count">0</span>
+                  <button class="pop-plus">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5 -->
+        <div class="pop-item" data-id="3" data-name="Начинка Ириска" data-price="620" data-old-price="720" data-weight="620 р./кг.">
+          <div class="discount-badge">скидки 500 руб</div>
+          <img class="pop-thumb" src="img/Rectangle 186-1.png">
+          <div class="hover-card">
+            <img class="hover-product-image" src="img/Rectangle 186-1.png">
+            <div class="hover-info">
+              <div class="info-hover-name-product">
+                <div class="hover-name-product">Начинка Ириска</div>
+                <p>620 р./кг.</p>
+              </div>
+              <div class="hover-bottom">
+                <div class="price">
+                  <span class="new">620</span>
+                  <span class="old">720</span>
+                </div>
+                <div class="pop-controls">
+                  <button class="pop-minus">-</button>
+                  <span class="pop-count">0</span>
+                  <button class="pop-plus">+</button>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      <!-- 3 -->
-  <div class="pop-item" data-id="4" data-name="Конфитюр малина" data-price="450" data-old-price="500" data-weight="450 р./кг.">
-    <div class="discount-badge">скидки 500 руб</div>
-    <img class="pop-thumb" src="img/Rectangle 187.png">
-
-    <div class="hover-card">
-      <img class="hover-product-image" src="img/Rectangle 187.png">
-
-      <div class="hover-info">
-        <div class="info-hover-name-product">
-          <div class="hover-name-product">Конфитюр малина</div>
-          <p>450 р./кг.</p>
-        </div>
-
-        <div class="hover-bottom">
-          <div class="price">
-            <span class="new">450</span>
-            <span class="old">500</span>
-          </div>
-
-          <div class="pop-controls">
-            <button class="pop-minus">-</button>
-            <span class="pop-count">0</span>
-            <button class="pop-plus">+</button>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
-
-  <!-- 4 -->
-  <div class="pop-item" data-id="3" data-name="Начинка Ириска" data-price="620" data-old-price="720" data-weight="620 р./кг.">
-    <div class="discount-badge">скидки 500 руб</div>
-    <img class="pop-thumb" src="img/Rectangle 186-1.png">
-
-    <div class="hover-card">
-      <img class="hover-product-image" src="img/Rectangle 186-1.png">
-
-      <div class="hover-info">
-        <div class="info-hover-name-product">
-          <div class="hover-name-product">Начинка Ириска</div>
-          <p>620 р./кг.</p>
-        </div>
-
-        <div class="hover-bottom">
-          <div class="price">
-            <span class="new">620</span>
-            <span class="old">720</span>
-          </div>
-
-          <div class="pop-controls">
-            <button class="pop-minus">-</button>
-            <span class="pop-count">0</span>
-            <button class="pop-plus">+</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 5 -->
-  <div class="pop-item" data-id="1" data-name="Сливки для торта" data-price="750" data-old-price="890" data-weight="750 р./кг.">
-    <div class="discount-badge">скидки 500 руб</div>
-    <img class="pop-thumb" src="img/Rectangle 186-2.png">
-
-    <div class="hover-card">
-      <img class="hover-product-image" src="img/Rectangle 186-2.png">
-
-      <div class="hover-info">
-        <div class="info-hover-name-product">
-          <div class="hover-name-product">Сливочный</div>
-          <p class="p-weight">750 р./кг.</p>
-        </div>
-
-        <div class="hover-bottom">
-          <div class="price">
-            <span class="new">750</span>
-            <span class="old">890</span>
-          </div>
-
-          <div class="pop-controls">
-            <button class="pop-minus">-</button>
-            <span class="pop-count">0</span>
-            <button class="pop-plus">+</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-    </div>
-  </div>
-</section>
+  </section>
 
   <section class="catalog" id="catalog">
     <div class="container">
       <h2>Каталог товаров</h2>
-
       <div class="filters" id="filters">
         <button class="filter-btn active" data-filter="all">Все</button>
       </div>
-
       <div class="catalog-list" id="catalogList"></div>
     </div>
   </section>
@@ -363,51 +312,62 @@
   <section class="contacts" id="contacts">
     <div class="container">
       <h2>Контакты</h2>
-
       <div class="contacts-wrapper">
         <div class="contacts-info">
           <div class="contact-card">
             <h3>Время работы</h3>
             <p>Пн–Вс<br>09:00–22:00</p>
           </div>
-
           <div class="contact-card">
             <h3>Адрес</h3>
             <p>Санкт-Петербург<br>Большая Морская ул., 18</p>
           </div>
-
           <div class="contact-card">
             <h3>Почта и телефон</h3>
             <p>hello@pinkcheesecake.ru<br>+7 (999) 123-45-67</p>
           </div>
         </div>
-
         <div class="contacts-map">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1998.6017853817763!2d30.308475215982513!3d59.934730681878666!2m3!1f0!2f0!3f0!2m3!1i1024!2i768!4f13.1!3m3!1m2!1s0x4696310b3b5f8f9f%3A0x8f3f5b5f3f5f3f5f!2z0JHQvtC70YzRiNCw0Y8g0JzQvtGA0YHQutCw0Y8g0YPQuy4sIDE4LCDQodCw0L3QutGCLdCf0LXRgtC10YDQsdGD0YDQsywgMTkxMTg2!5e0!3m2!1sru!2sru!4v1710000000000!5m2!1sru!2sru"
-            width="100%"
-            height="100%"
-            style="border:0; border-radius: 18px;"
-            allowfullscreen=""
-            loading="lazy">
-          </iframe>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1998.6017853817763!2d30.308475215982513!3d59.934730681878666!2m3!1f0!2f0!3f0!2m3!1i1024!2i768!4f13.1!3m3!1m2!1s0x4696310b3b5f8f9f%3A0x8f3f5b5f3f5f3f5f!2z0JHQvtC70YzRiNCw0Y8g0JzQvtGA0YHQutCw0Y8g0YPQuy4sIDE4LCDQodCw0L3QutGCLdCf0LXRgtC10YDQsdGD0YDQsywgMTkxMTg2!5e0!3m2!1sru!2sru!4v1710000000000!5m2!1sru!2sru" width="100%" height="100%" style="border:0; border-radius: 18px;" allowfullscreen="" loading="lazy"></iframe>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- НОВЫЙ ФУТЕР -->
   <footer class="footer">
-    <img src="img/Group 1548.png" alt="" class="footer-img">
-    <div class="container footer-box">
-      <div class="logo">
-        <img src="img/Union.png" alt="Логотип">
-        <span>Розовый чизкейк</span>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <img src="img/Union.png" alt="Логотип">
+          <span>Розовый чизкейк</span>
+        </div>
+        <div class="footer-contacts">
+          <div class="footer-contact-item">
+            <span>hello@pinkcheesecake.ru</span>
+          </div>
+          <div class="footer-contact-item">
+            <span>+7 (999) 123-45-67</span>
+          </div>
+          <div class="footer-contact-item">
+            <span>Санкт-Петербург, Большая Морская ул., 18</span>
+          </div>
+        </div>
+        <div class="footer-social">
+          <a href="https://vk.com/" target="_blank" class="social-link">
+            <img src="img/vk.svg" alt="VK" class="social-icon">
+          </a>
+          <a href="https://t.me/" target="_blank" class="social-link">
+            <img src="img/tg.svg" alt="Telegram" class="social-icon">
+          </a>
+        </div>
       </div>
-      <p>Санкт-Петербург • Авторские десерты</p>
+      <div class="footer-copyright">
+        <p>Санкт-Петербург • Авторские десерты</p>
+      </div>
     </div>
   </footer>
 
   <script src="js/script.js" type="module"></script>
-
 </body>
 </html>
