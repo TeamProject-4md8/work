@@ -1047,18 +1047,13 @@ h2 {
 .burger-menu.active span:nth-child(3) {
   transform: translateY(-9px) rotate(-45deg);
 }
-@media (max-width: 768px) {
-  .social-icons {
-    display: none;
-  }
-}
+
 @media (max-width: 992px) {
   .hero-box,
   .about-box,
   .cart-box {
     flex-direction: column;
   }
-
 
   .hero-text h1 {
     font-size: 56px;
@@ -1149,11 +1144,6 @@ h2 {
 @media (max-width: 768px) {
   .burger-menu {
     display: flex;
-    order: 2;
-  }
-
-  .social-icons {
-    order: 3;
   }
 
   .menu {
@@ -1193,22 +1183,159 @@ h2 {
     z-index: 14;
   }
 
-  .head {
-    display: flex;
-    justify-content: space-between;
+  .social-icons {
+    display: none;
+  }
+
+  .catalog-list {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-text h1 {
+    font-size: 42px;
+  }
+
+  .hero-img {
+    min-height: 250px;
+  }
+
+  .contacts-map {
+    min-height: 300px;
+  }
+
+  .info-card {
+    padding: 40px 0;
+  }
+
+  .info-card-box {
+    padding: 30px 20px;
+  }
+
+  .info-card-content h3 {
+    font-size: 22px;
+  }
+
+  .info-card-condition {
+    font-size: 16px;
+  }
+
+  .info-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .info-card-image {
+    width: 200px;
+  }
+
+  .quote {
+    padding: 48px 0 60px;
+  }
+
+  .quote__container {
+    padding: 0 16px;
+  }
+
+  .quote__bubble {
+    max-width: 100%;
+    min-height: auto;
+    padding: 35px 25px 30px;
+    background-size: 100% 100%;
+  }
+
+  .quote__text {
+    max-width: 320px;
+    font-size: 12px;
+    line-height: 1.4;
+    padding: 0 15px;
+    margin: 0 auto;
+  }
+
+  .quote__mark {
+    font-size: 48px;
+    left: -25px;
+    top: -8px;
+  }
+
+  .quote-bg-tart-left,
+  .quote-bg-tart-right {
+    width: 100px;
+  }
+
+  .quote-bg-tart-left {
+    left: -24px;
+    top: 28%;
+    transform: none;
+  }
+
+  .quote-bg-tart-right {
+    right: -24px;
+    top: 58%;
+    transform: translateY(-50%);
+  }
+
+  .popular-box {
+    min-height: auto;
+    overflow: visible;
+  }
+
+  .pop-item {
+    width: 140px;
+  }
+
+  .hover-card {
+    width: 280px;
+    min-height: 360px;
+    padding: 22px 18px 18px;
+  }
+
+  .hover-product-image {
+    max-width: 190px;
+    height: 180px;
+  }
+
+  .hover-info h4 {
+    font-size: 20px;
+  }
+
+  .hover-info p {
+    font-size: 18px;
+  }
+
+  .hover-card .price .old {
+    font-size: 20px;
+    min-width: 76px;
+    height: 38px;
+  }
+
+  .hover-card .price .new {
+    font-size: 34px;
+    min-width: 116px;
+    height: 52px;
+  }
+
+  .pop-controls button {
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+  }
+
+  .pop-count {
+    font-size: 18px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 25px;
+  }
+
+  .footer-contacts {
     align-items: center;
   }
 
-  .logo {
-    order: 1;
-  }
-
-  .burger-menu {
-    order: 2;
-  }
-
-  .social-icons {
-    order: 3;
+  .footer-logo {
+    justify-content: center;
   }
 }
 
