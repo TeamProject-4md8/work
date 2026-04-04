@@ -313,3 +313,33 @@ async function fetchData() {
 }
 
 fetchData()
+document.addEventListener('DOMContentLoaded', function() {
+  const burger = document.getElementById('burgerMenu');
+  const menu = document.getElementById('menu');
+  const body = document.body;
+
+  if (burger && menu) {
+    burger.addEventListener('click', function(e) {
+      e.stopPropagation();
+      burger.classList.toggle('active');
+      menu.classList.toggle('open');
+      body.classList.toggle('menu-open');
+    });
+
+    menu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        burger.classList.remove('active');
+        menu.classList.remove('open');
+        body.classList.remove('menu-open');
+      });
+    });
+
+    document.addEventListener('click', function(e) {
+      if (body.classList.contains('menu-open') && !menu.contains(e.target) && !burger.contains(e.target)) {
+        burger.classList.remove('active');
+        menu.classList.remove('open');
+        body.classList.remove('menu-open');
+      }
+    });
+  }
+});
