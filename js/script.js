@@ -1,14 +1,12 @@
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm"
-	
+
 const supabaseUrl = 'https://pwykgseanhuvaaxhmsaz.supabase.co'
 const supabaseKey = 'sb_publishable_XydslCojK5a8utYzRFj2ag_1i9WIoSM'
 const supabaseClient = createClient(supabaseUrl, supabaseKey)
 
-// ===== ПРОДУКТЫ =====
 var products = []
 var categories = []
 
-// ===== DOM =====
 const catalogList = document.getElementById("catalogList")
 const filterButtons = [...document.querySelectorAll(".filter-btn")]
 const cartItems = document.getElementById("cartItems")
@@ -19,7 +17,36 @@ const message = document.getElementById("message")
 
 let cart = []
 
-// ===== КАТАЛОГ =====
+document.addEventListener('DOMContentLoaded', function() {
+  const burger = document.getElementById('burgerMenu');
+  const menu = document.getElementById('menu');
+  const body = document.body;
+
+  if (burger && menu) {
+    burger.addEventListener('click', function() {
+      burger.classList.toggle('active');
+      menu.classList.toggle('open');
+      body.classList.toggle('menu-open');
+    });
+
+    menu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        burger.classList.remove('active');
+        menu.classList.remove('open');
+        body.classList.remove('menu-open');
+      });
+    });
+
+    body.addEventListener('click', function(e) {
+      if (body.classList.contains('menu-open') && !menu.contains(e.target) && !burger.contains(e.target)) {
+        burger.classList.remove('active');
+        menu.classList.remove('open');
+        body.classList.remove('menu-open');
+      }
+    });
+  }
+});
+
 function showProducts(category = "all") {
   if (!catalogList) return
   catalogList.innerHTML = ""
@@ -44,31 +71,28 @@ function showProducts(category = "all") {
   })
 }
 
-// ===== ФИЛЬТРЫ =====
 function setupFilters(){
-	filterButtons.forEach(btn => {
-	  btn.onclick = () => {
-		filterButtons.forEach(b => b.classList.remove("active"))
-		btn.classList.add("active")
-		showProducts(btn.dataset.filter)
-	  }
-	})
+  filterButtons.forEach(btn => {
+    btn.onclick = () => {
+      filterButtons.forEach(b => b.classList.remove("active"))
+      btn.classList.add("active")
+      showProducts(btn.dataset.filter)
+    }
+  })
 }
 
 function showCategories() {
-	
-	categories.forEach(category => {
-		const card = document.createElement("button")
-		card.className = "filter-btn"
-		card.dataset.filter = category.id_type_product
-		card.innerHTML = category.product_type_name
-		filterButtons.push(card)
-		filters.appendChild(card)
-	})
-	setupFilters()
+  categories.forEach(category => {
+    const card = document.createElement("button")
+    card.className = "filter-btn"
+    card.dataset.filter = category.id_type_product
+    card.innerHTML = category.product_type_name
+    filterButtons.push(card)
+    filters.appendChild(card)
+  })
+  setupFilters()
 }
 
-// ===== КОРЗИНА =====
 function addToCart(id) {
   const product = products.find(p => p.id_product === id)
   const found = cart.find(p => p.id_product === id)
@@ -100,7 +124,7 @@ function updateCart() {
 
     const row = document.createElement("div")
     row.className = "cart-row"
-    row.innerText = `${item.name} — ${item.count} шт.`
+    row.innerText = `${item.product_name} — ${item.count} шт.`
     cartItems.appendChild(row)
   })
 
@@ -136,8 +160,6 @@ function syncPopularCounts() {
   })
 }
 
-
-// ===== ОТПРАВКА =====
 if (orderForm) {
   orderForm.onsubmit = async (e) => {
     e.preventDefault()
@@ -148,16 +170,15 @@ if (orderForm) {
     }
 
     const formData = new FormData(orderForm)
-	const rawPhone = formData.get("phone");
-	const phoneNumber = rawPhone.replace(/\D/g, "");
+    const rawPhone = formData.get("phone");
+    const phoneNumber = rawPhone.replace(/\D/g, "");
 
-	const phoneRegex = /^\d+$/;
+    const phoneRegex = /^\d+$/;
 
-	if (!phoneRegex.test(phoneNumber)) {
-	  message.textContent = "Неправильный номер";
-	  return;
-	}
-
+    if (!phoneRegex.test(phoneNumber)) {
+      message.textContent = "Неправильный номер";
+      return;
+    }
 
     const order = {
       customer_name: formData.get("name"),
@@ -190,7 +211,6 @@ if (orderForm) {
   }
 }
 
-// ===== POPULAR БЛОК =====
 document.addEventListener("DOMContentLoaded", () => {
   const items = document.querySelectorAll(".pop-item")
   const box = document.querySelector(".popular-box")
@@ -260,10 +280,8 @@ document.addEventListener("DOMContentLoaded", () => {
   syncPopularCounts()
 })
 
-// ===== INIT =====
 async function fetchCategories() {
-  
-    const { data, error } = await supabaseClient
+  const { data, error } = await supabaseClient
     .from('product_type')
     .select('*')
 
@@ -274,10 +292,10 @@ async function fetchCategories() {
 
   data.forEach(p => categories.push(p))
   
-	showCategories()
-	showProducts()
-	updateCart()
-	syncPopularCounts()
+  showCategories()
+  showProducts()
+  updateCart()
+  syncPopularCounts()
 }
 
 async function fetchData() {
@@ -291,7 +309,7 @@ async function fetchData() {
   }
 
   data.forEach(p => products.push(p))
-	fetchCategories()
+  fetchCategories()
 }
 
 fetchData()
