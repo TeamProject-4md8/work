@@ -1419,43 +1419,9 @@ h2 {
 }
 
 @media (max-width: 576px) {
-  .hero-img {
-    min-height: 200px;
-  }
-
-  .info-item {
-    flex-direction: column;
-    text-align: center;
-    padding: 20px;
-  }
-
-  .info-icon-wrapper {
-    margin-bottom: 10px;
-  }
-
-  .quote {
-    padding: 35px 0 45px;
-  }
-
-  .quote__container {
-    padding: 0 12px;
-  }
-
-  .quote__bubble {
-    padding: 28px 20px 24px;
-  }
-
-  .quote__text {
-    max-width: 260px;
-    font-size: 11px;
-    line-height: 1.35;
-    padding: 0 10px;
-  }
-
-  .quote__mark {
-    font-size: 42px;
-    left: -20px;
-    top: -6px;
+  .quote-bg-tart-left,
+  .quote-bg-tart-right {
+    display: none;
   }
 }
 
