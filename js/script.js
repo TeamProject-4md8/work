@@ -14,6 +14,7 @@ const filters = document.getElementById("filters")
 const totalPrice = document.getElementById("totalPrice")
 const orderForm = document.getElementById("orderForm")
 const message = document.getElementById("message")
+const popularContainer = document.getElementById("popular-container")
 
 let cart = []
 
@@ -46,6 +47,130 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+
+function createPopItem({ id, name, price, oldPrice, weight, image }) {
+  const item = document.createElement("div");
+  item.className = "pop-item";
+
+  // data-атрибуты
+  item.dataset.id = id;
+  item.dataset.name = name;
+  item.dataset.price = price;
+  item.dataset.oldPrice = oldPrice;
+  item.dataset.weight = weight;
+
+  item.innerHTML = `
+    <div class="discount-badge">скидки ${oldPrice-price} руб</div>
+
+    <img class="pop-thumb" src="${image}" alt="${name}">
+
+    <div class="hover-card">
+      <img class="hover-product-image" src="${image}" alt="${name}">
+
+      <div class="hover-info">
+        <div class="info-hover-name-product">
+          <div class="hover-name-product">${name}</div>
+          <p>${weight}</p>
+        </div>
+
+        <div class="hover-bottom">
+          <div class="price">
+            <span class="new">${price}</span>
+            <span class="old">${oldPrice}</span>
+          </div>
+
+          <div class="pop-controls">
+            <button class="pop-minus" type="button">-</button>
+            <span class="pop-count">0</span>
+            <button class="pop-plus" type="button">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  return item;
+}
+
+function showPopItems(){
+  let filtered = products.filter(p => p.product_floating)
+  filtered.forEach(p => {
+    popularContainer.appendChild(createPopItem({
+      id: p.id_product,
+      name: p.product_name,
+      price: p.discount,
+      oldPrice: p.product_price,
+      weight: `${p.product_weight} г`,
+      image: p.product_image
+    }))
+  })
+  const items = document.querySelectorAll(".pop-item")
+  const box = document.querySelector(".popular-box")
+
+  const positions = [
+    { x: 10, y: 65 },
+    { x: 75, y: 70 },
+    { x: 20, y: 30 },
+    { x: 60, y: 50 },
+    { x: 55, y: 10 },
+    { x: 80, y: 15 },
+    { x: 60, y: 85 }
+  ]
+
+  items.forEach((item, i) => {
+    const pos = positions[i] || { x: 50, y: 50 }
+
+    item.style.left = pos.x + "%"
+    item.style.top = pos.y + "%"
+
+    let t = Math.random() * 100
+
+    function float() {
+      t += 0.02
+      const x = Math.sin(t + i) * 5
+      const y = Math.cos(t + i) * 5
+
+      if (!item.classList.contains("active")) {
+        item.style.transform = `translate(${x}px, ${y}px)`
+      }
+
+      requestAnimationFrame(float)
+    }
+
+    float()
+
+    item.onmouseenter = () => {
+      items.forEach(i => i.classList.remove("active"))
+      item.classList.add("active")
+      box.classList.add("blur-active")
+
+      const id = +item.dataset.id
+      item.querySelector(".pop-count").textContent = getCartItemCount(id)
+    }
+
+    item.onmouseleave = () => {
+      item.classList.remove("active")
+      box.classList.remove("blur-active")
+    }
+  })
+
+  box.onclick = (e) => {
+    const plus = e.target.closest(".pop-plus")
+    const minus = e.target.closest(".pop-minus")
+    if (!plus && !minus) return
+
+    const item = e.target.closest(".pop-item")
+    const id = +item.dataset.id
+    const current = getCartItemCount(id)
+
+    if (plus) setCartItemCount(id, current + 1)
+    if (minus) setCartItemCount(id, current - 1)
+
+    item.querySelector(".pop-count").textContent = getCartItemCount(id)
+  }
+
+  syncPopularCounts()
+}
 
 function showProducts(category = "all") {
   if (!catalogList) return
@@ -122,10 +247,33 @@ function updateCart() {
   cart.forEach(item => {
     total += item.product_price * item.count
 
-    const row = document.createElement("div")
-    row.className = "cart-row"
-    row.innerText = `${item.product_name} — ${item.count} шт.`
-    cartItems.appendChild(row)
+    const card = document.createElement("div")
+    card.className = "cart-item"
+
+    card.innerHTML = `
+      <div class="pop-controls">
+        <button class="pop-minus" type="button">-</button>
+        <span class="pop-count">${getCartItemCount(item.id_product)}</span>
+        <button class="pop-plus" type="button">+</button>
+      </div>
+      <img src="${item.product_image}" width="100px" height="100px">
+      <h6>${item.product_name}</h6>
+      <p>${item.product_price} ₽</p>
+    `
+    card.onclick = (e) => {
+      const plus = e.target.closest(".pop-plus")
+      const minus = e.target.closest(".pop-minus")
+      if (!plus && !minus) return
+
+      const id = item.id_product
+      const current = getCartItemCount(id)
+
+      if (plus) setCartItemCount(id, current + 1)
+      if (minus) setCartItemCount(id, current - 1)
+
+    }
+
+    cartItems.appendChild(card)
   })
 
   totalPrice.textContent = total + " ₽"
@@ -193,15 +341,27 @@ if (orderForm) {
     const { data, error } = await supabaseClient.from("Order").insert([order]).select()
     if (error) return
 
-    await supabaseClient.from("order_items").insert(
+    await supabaseClient.from("product_count_order").insert(
       cart.map(i => ({
-        order_id: data[0].id_order,
-        product_id: i.id_product,
-        product_name: i.product_name,
-        price: i.product_price,
-        quantity: i.count
+        id_order: data[0].id_order,
+        id_product: i.id_product,
+        count_product: i.count
       }))
     )
+
+    await supabaseClient.functions.invoke('telegram', {
+      body: {
+        name: formData.get("name"),
+        phone: phoneNumber,
+        email: formData.get("email"),
+        address: formData.get("address"),
+        comment: formData.get("comment"),
+        items:    cart.map(i => ({
+          name: i.product_name,
+          count: i.count
+        }))
+      },
+    })
 
     message.textContent = "Заказ отправлен"
     cart = []
@@ -210,75 +370,6 @@ if (orderForm) {
     orderForm.reset()
   }
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-  const items = document.querySelectorAll(".pop-item")
-  const box = document.querySelector(".popular-box")
-
-  const positions = [
-    { x: 10, y: 65 },
-    { x: 75, y: 70 },
-    { x: 20, y: 30 },
-    { x: 60, y: 50 },
-    { x: 55, y: 10 },
-    { x: 80, y: 15 },
-    { x: 60, y: 85 }
-  ]
-
-  items.forEach((item, i) => {
-    const pos = positions[i] || { x: 50, y: 50 }
-
-    item.style.left = pos.x + "%"
-    item.style.top = pos.y + "%"
-
-    let t = Math.random() * 100
-
-    function float() {
-      t += 0.02
-      const x = Math.sin(t + i) * 5
-      const y = Math.cos(t + i) * 5
-
-      if (!item.classList.contains("active")) {
-        item.style.transform = `translate(${x}px, ${y}px)`
-      }
-
-      requestAnimationFrame(float)
-    }
-
-    float()
-
-    item.onmouseenter = () => {
-      items.forEach(i => i.classList.remove("active"))
-      item.classList.add("active")
-      box.classList.add("blur-active")
-
-      const id = +item.dataset.id
-      item.querySelector(".pop-count").textContent = getCartItemCount(id)
-    }
-
-    item.onmouseleave = () => {
-      item.classList.remove("active")
-      box.classList.remove("blur-active")
-    }
-  })
-
-  box.onclick = (e) => {
-    const plus = e.target.closest(".pop-plus")
-    const minus = e.target.closest(".pop-minus")
-    if (!plus && !minus) return
-
-    const item = e.target.closest(".pop-item")
-    const id = +item.dataset.id
-    const current = getCartItemCount(id)
-
-    if (plus) setCartItemCount(id, current + 1)
-    if (minus) setCartItemCount(id, current - 1)
-
-    item.querySelector(".pop-count").textContent = getCartItemCount(id)
-  }
-
-  syncPopularCounts()
-})
 
 async function fetchCategories() {
   const { data, error } = await supabaseClient
@@ -296,6 +387,7 @@ async function fetchCategories() {
   showProducts()
   updateCart()
   syncPopularCounts()
+  showPopItems()
 }
 
 async function fetchData() {

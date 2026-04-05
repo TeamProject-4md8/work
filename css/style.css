@@ -503,8 +503,35 @@ h2 {
 }
 
 .cart-items {
-  min-height: 100px;
+  min-height: 240px;
   margin-bottom: 20px;
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 10px;
+  scroll-behavior: smooth;
+}
+
+.cart-item {
+  flex: 0 0 auto;
+  width: 165px;
+  height: 230px;
+  background: #EDEDED;
+  border-radius: 12px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+}
+
+.cart-item h6,p {
+  font-size: 14px;
+  color: #8F363F;
+}
+.cart-item img {
+  padding: 5px;
+  align-self: flex-center;
 }
 
 .cart-row {
@@ -950,6 +977,7 @@ h2 {
   text-transform: uppercase;
   white-space: nowrap;
   z-index: 3;
+  padding: 0px 10px 0px 10px;
 }
 
 .discount-badge::after {
@@ -1050,6 +1078,10 @@ h2 {
   gap: 15px;
 }
 
+.cart-item .pop-controls {
+  padding: 5px;
+}
+
 .pop-controls button {
   width: 40px;
   height: 40px;
@@ -1068,6 +1100,15 @@ h2 {
 
 .pop-count {
   font-size: 20px;
+}
+
+.cart-item .pop-count {
+  font-size: 14px;
+  color: #EA4669 ;
+}
+.cart-item .pop-controls button {
+  width: 30px;
+  height: 30px;
 }
 
 .pop-item.active {
