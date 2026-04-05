@@ -308,6 +308,12 @@ h2 {
   background: #ffd7e2;
   padding: 20px;
   border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.card-simple:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
 }
 
 .card-simple h3 {
@@ -429,6 +435,12 @@ h2 {
   border-radius: 14px;
   padding: 24px;
   text-align: center;
+  transition: all 0.3s ease;
+}
+
+.item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
 .item img {
@@ -591,6 +603,12 @@ h2 {
   flex: 1;
   min-width: 220px;
   color: white;
+  transition: all 0.3s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
 }
 
 .contact-card h3 {
@@ -746,15 +764,28 @@ h2 {
 }
 
 .info-card-box {
-  background: #FFF7CD;
-  border-radius: 30px;
-  padding: 40px;
+  background: linear-gradient(135deg, #FFF7CD 0%, #FFE8A3 100%);
+  border-radius: 40px;
+  padding: 50px;
   position: relative;
   overflow: hidden;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 30px;
+  gap: 50px;
+  box-shadow: 0 20px 40px rgba(234, 70, 105, 0.15);
+}
+
+.info-card-box::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(234,70,105,0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  z-index: 0;
 }
 
 .info-card-content {
@@ -763,66 +794,100 @@ h2 {
 }
 
 .info-card-content h3 {
-  font-family: 'Involve';
-  font-size: 28px;
+  font-family: 'Involve', 'Montserrat', sans-serif;
+  font-size: 32px;
   font-weight: 800;
   color: #8F363F;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   text-transform: uppercase;
 }
 
-.info-card-condition {
-  font-family: 'Involve';
-  font-size: 18px;
-  font-weight: 600;
+.info-card-content h3 .highlight {
   color: #EA4669;
-  margin-bottom: 30px;
+  background: #FFF7CD;
+  padding: 5px 15px;
+  border-radius: 50px;
+  display: inline-block;
+}
+
+.info-card-condition {
+  font-family: 'Involve', 'Montserrat', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #8F363F;
+  margin-bottom: 40px;
+}
+
+.info-card-condition .price-highlight {
+  color: #EA4669;
+  font-size: 28px;
+  font-weight: 800;
 }
 
 .info-card-items {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 30px;
 }
 
 .info-item {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 20px;
+  background: rgba(255, 255, 255, 0.6);
+  padding: 15px 25px;
+  border-radius: 20px;
+  backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
 }
 
-.info-hover-name-product {
+.info-item:hover {
+  background: white;
+  transform: translateX(10px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.info-icon-wrapper {
+  width: 60px;
+  height: 60px;
+  background: #EA4669;
+  border-radius: 18px;
   display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  align-items: flex-end;
-}
-
-.hover-name-product {
-  font-size: 20px;
-}
-
-.p-weight {
-  font-size: 10px;
+  align-items: center;
+  justify-content: center;
 }
 
 .info-icon {
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   object-fit: contain;
+  filter: brightness(0) invert(1);
 }
 
-.info-item span {
+.info-text {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.info-title {
+  font-family: 'Involve', 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  color: #8F363F;
+  letter-spacing: 1px;
+}
+
+.info-desc {
   font-family: 'Involve', 'Montserrat', sans-serif;
   font-size: 14px;
-  font-weight: 600;
-  color: #8F363F;
-  line-height: 1.4;
+  font-weight: 500;
+  color: #b08a95;
 }
 
 .info-card-image {
   flex-shrink: 0;
-  width: 400px;
+  width: 350px;
   z-index: 2;
 }
 
@@ -830,6 +895,7 @@ h2 {
   width: 100%;
   height: auto;
   display: block;
+  filter: drop-shadow(0 15px 25px rgba(0,0,0,0.1));
 }
 
 .popular-box {
@@ -1124,20 +1190,24 @@ h2 {
   .info-card-box {
     flex-direction: column;
     text-align: center;
+    padding: 40px 30px;
   }
 
   .info-card-items {
-    align-items: center;
+    align-items: stretch;
   }
 
   .info-item {
-    flex-direction: column;
-    text-align: center;
+    justify-content: center;
   }
 
   .info-card-image {
-    width: 300px;
+    width: 250px;
     margin-top: 20px;
+  }
+
+  .info-card-content h3 {
+    font-size: 26px;
   }
 }
 
@@ -1219,9 +1289,18 @@ h2 {
     font-size: 16px;
   }
 
+  .info-card-condition .price-highlight {
+    font-size: 24px;
+  }
+
+  .info-icon-wrapper {
+    width: 50px;
+    height: 50px;
+  }
+
   .info-icon {
-    width: 32px;
-    height: 32px;
+    width: 26px;
+    height: 26px;
   }
 
   .info-card-image {
@@ -1342,6 +1421,16 @@ h2 {
 @media (max-width: 576px) {
   .hero-img {
     min-height: 200px;
+  }
+
+  .info-item {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .info-icon-wrapper {
+    margin-bottom: 10px;
   }
 
   .quote {
