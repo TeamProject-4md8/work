@@ -532,6 +532,22 @@ h2 {
   font-family: 'Involve';
 }
 
+.cart-right input:hover {
+  background: #FFF7CD;
+  outline: 1px solid #EA4669;
+  color: #EA4669;
+}
+
+.cart-right input:hover::placeholder {
+  color: #EA4669;  
+}
+
+.cart-right input:focus {
+  background: white;
+  outline: 2px solid #EA4669;
+  border: none;
+}
+
 .cart-right button {
   font-family: 'Involve';
   font-weight: 700;
