@@ -13,35 +13,35 @@
 <body>
 
   <header class="header">
-  <div class="container head">
-    <div class="logo">
-      <img src="img/Union.png" alt="Логотип">
+    <div class="container head">
+      <div class="logo">
+        <img src="img/Union.png" alt="Логотип">
+      </div>
+
+      <button class="burger-menu" id="burgerMenu" aria-label="Меню">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="menu" id="menu">
+        <a href="#about">О нас</a>
+        <a href="#popular">Популярное</a>
+        <a href="#catalog">Каталог</a>
+        <a href="#cart">Корзина</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+
+      <div class="social-icons">
+        <a href="https://vk.com/" target="_blank" class="social-link">
+          <img src="img/vk.svg" alt="VK" class="social-icon">
+        </a>
+        <a href="https://t.me/" target="_blank" class="social-link">
+          <img src="img/tg.svg" alt="Telegram" class="social-icon">
+        </a>
+      </div>
     </div>
-
-    <button class="burger-menu" id="burgerMenu" aria-label="Меню">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-
-    <nav class="menu" id="menu">
-      <a href="#about">О нас</a>
-      <a href="#popular">Популярное</a>
-      <a href="#catalog">Каталог</a>
-      <a href="#cart">Корзина</a>
-      <a href="#contacts">Контакты</a>
-    </nav>
-
-    <div class="social-icons">
-      <a href="https://vk.com/" target="_blank" class="social-link">
-        <img src="img/vk.svg" alt="VK" class="social-icon">
-      </a>
-      <a href="https://t.me/" target="_blank" class="social-link">
-        <img src="img/tg.svg" alt="Telegram" class="social-icon">
-      </a>
-    </div>
-  </div>
-</header>
+  </header>
 
   <section class="hero">
     <div class="container hero-box">
@@ -49,7 +49,6 @@
         <h1>РОЗОВЫЙ<br>ЧИЗКЕЙК</h1>
         <p>Доставка кондитерской продукции в Санкт-Петербурге</p>
       </div>
-
       <div class="hero-img"></div>
     </div>
   </section>
@@ -57,7 +56,6 @@
   <section class="quote">
     <img class="quote-bg-tart-left" src="img/freepik__-__30096 2.png" alt="">
     <img class="quote-bg-tart-right" src="img/freepik__-__30096 1.png" alt="">
-
     <div class="container quote__container">
       <div class="quote__bubble">
         <div class="quote__text">
@@ -65,9 +63,7 @@
           Я занимаюсь профессиональной выпечкой тортов уже более 15 лет.
           На своём опыте знаю, в момент процесса выпечки всегда не вовремя
           заканчивается нужный краситель, ломается фигурка, рассыпается смесь.
-
           <br><br>
-
           Где кондитеру найти товары поздним вечером, ночью или рано утром? У нас!
         </div>
       </div>
@@ -77,7 +73,6 @@
   <section class="about" id="about">
     <div class="container">
       <h2>О нас</h2>
-
       <div class="about-box">
         <div class="about-col">
           <div class="card-simple">
@@ -87,6 +82,10 @@
           <div class="card-simple pink">
             <h3>ВЫДАЕМ НАПРОКАТ</h3>
             <p>Прокат кондитерских форм и приспособлений</p>
+          </div>
+          <div class="card-simple cream">
+            <h3>КОНСУЛЬТИРУЕМ ПО АССОРТИМЕНТУ</h3>
+            <p>Индивидуальные консультации по подбору оптимального решения</p>
           </div>
         </div>
 
@@ -113,17 +112,27 @@
     <div class="container">
       <div class="info-card-box">
         <div class="info-card-content">
-          <h3>БЕСПЛАТНАЯ ДОСТАВКА 24 ЧАСА</h3>
-          <p class="info-card-condition">При заказе от 5000 РУБ</p>
+          <h3>БЕСПЛАТНАЯ ДОСТАВКА <span class="highlight">24 ЧАСА</span></h3>
+          <p class="info-card-condition">При заказе от <span class="price-highlight">5000 ₽</span></p>
 
           <div class="info-card-items">
             <div class="info-item">
-              <img src="img/Map.svg" alt="Доставка" class="info-icon">
-              <span>ДОСТАВКА КУРЬЕРСКОЙ СЛУЖБОЙ<br>По СПб и ЛО 24 часа</span>
+              <div class="info-icon-wrapper">
+                <img src="img/Map.svg" alt="Доставка" class="info-icon">
+              </div>
+              <div class="info-text">
+                <span class="info-title">ДОСТАВКА КУРЬЕРСКОЙ СЛУЖБОЙ</span>
+                <span class="info-desc">По СПб и ЛО 24 часа</span>
+              </div>
             </div>
             <div class="info-item">
-              <img src="img/Clock.svg" alt="Круглосуточно" class="info-icon">
-              <span>Принимаем заказы круглосуточно</span>
+              <div class="info-icon-wrapper">
+                <img src="img/Clock.svg" alt="Круглосуточно" class="info-icon">
+              </div>
+              <div class="info-text">
+                <span class="info-title">КРУГЛОСУТОЧНО</span>
+                <span class="info-desc">Принимаем заказы 24/7</span>
+              </div>
             </div>
           </div>
         </div>
@@ -137,9 +146,7 @@
   <section class="popular" id="popular">
     <div class="container">
       <h2>Популярные товары</h2>
-
       <div class="popular-box">
-        <!-- 1 -->
         <div class="pop-item" data-id="5" data-name="Фисташковый круассан" data-price="499" data-old-price="560" data-weight="450 г / 4 шт.">
           <div class="discount-badge">скидки 500 руб</div>
           <img class="pop-thumb" src="img/freepik__-__30101 3.png" alt="Фисташковый круассан">
@@ -165,7 +172,6 @@
           </div>
         </div>
 
-        <!-- 2 -->
         <div class="pop-item" data-id="2" data-name="Клубничная глазурь" data-price="110" data-old-price="160" data-weight="110 р./кг.">
           <div class="discount-badge">скидки 500 руб</div>
           <img class="pop-thumb" src="img/Rectangle 186.png">
@@ -191,7 +197,6 @@
           </div>
         </div>
 
-        <!-- 3 -->
         <div class="pop-item" data-id="1" data-name="Сливки для торта" data-price="750" data-old-price="890" data-weight="750 р./кг.">
           <div class="discount-badge">скидки 500 руб</div>
           <img class="pop-thumb" src="img/Rectangle 186-2.png" alt="Сливки для торта">
@@ -217,7 +222,6 @@
           </div>
         </div>
 
-        <!-- 4 -->
         <div class="pop-item" data-id="4" data-name="Конфитюр малина" data-price="450" data-old-price="500" data-weight="450 р./кг.">
           <div class="discount-badge">скидки 500 руб</div>
           <img class="pop-thumb" src="img/Rectangle 187.png">
@@ -243,7 +247,6 @@
           </div>
         </div>
 
-        <!-- 5 -->
         <div class="pop-item" data-id="3" data-name="Начинка Ириска" data-price="620" data-old-price="720" data-weight="620 р./кг.">
           <div class="discount-badge">скидки 500 руб</div>
           <img class="pop-thumb" src="img/Rectangle 186-1.png">
@@ -292,7 +295,6 @@
             Итого: <span id="totalPrice">0 ₽</span>
           </div>
         </div>
-
         <div class="cart-right">
           <h2>Оформление заказа</h2>
           <form id="orderForm">
@@ -334,7 +336,6 @@
     </div>
   </section>
 
-  <!-- НОВЫЙ ФУТЕР -->
   <footer class="footer">
     <div class="container">
       <div class="footer-content">
@@ -343,15 +344,9 @@
           <span>Розовый чизкейк</span>
         </div>
         <div class="footer-contacts">
-          <div class="footer-contact-item">
-            <span>hello@pinkcheesecake.ru</span>
-          </div>
-          <div class="footer-contact-item">
-            <span>+7 (999) 123-45-67</span>
-          </div>
-          <div class="footer-contact-item">
-            <span>Санкт-Петербург, Большая Морская ул., 18</span>
-          </div>
+          <div class="footer-contact-item">hello@pinkcheesecake.ru</div>
+          <div class="footer-contact-item">+7 (999) 123-45-67</div>
+          <div class="footer-contact-item">Санкт-Петербург, Большая Морская ул., 18</div>
         </div>
         <div class="footer-social">
           <a href="https://vk.com/" target="_blank" class="social-link">
