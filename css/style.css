@@ -510,7 +510,9 @@ h2 {
 
 .cart-items {
   display: flex;
-  flex-direction: row;
+  gap: 15px;
+  overflow-x: auto;
+  padding-bottom: 10px;
 }
 
 .cart-item {
