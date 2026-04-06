@@ -1320,6 +1320,11 @@ h2 {
   .catalog-list {
     grid-template-columns: 1fr;
   }
+  
+  .hero-text {
+    margin-top: 0px;
+    margin-bottom: -100px;
+  }
 
   .hero-text h1 {
     font-size: 42px;
