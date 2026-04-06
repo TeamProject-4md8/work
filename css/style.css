@@ -508,14 +508,10 @@ h2 {
   width: 50%;
 }
 
-.cart-items {
-  display: flex;
-  gap: 15px;
-  overflow-x: auto;
-}
+
 
 .cart-item {
-  display: flex;
+
   flex: 0 0 auto;
   width: 165px;
   height: 230px;
