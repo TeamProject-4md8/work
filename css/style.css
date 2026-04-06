@@ -271,7 +271,7 @@ h2 {
 .catalog,
 .cart-section,
 .contacts {
-  min-heigh: 100vh;
+
   padding: 80px 0;
 }
 
@@ -758,7 +758,7 @@ h2 {
 }
 
 .popular-box .pop-item {
-  min-height: 100vh;
+
   filter: none;
 }
 
