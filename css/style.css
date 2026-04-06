@@ -508,6 +508,11 @@ h2 {
   width: 50%;
 }
 
+.cart-items {
+  display: flex;
+  flex-direction: row;
+}
+
 .cart-item {
   flex: 0 0 auto;
   width: 165px;
