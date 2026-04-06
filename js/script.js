@@ -105,71 +105,92 @@ function showPopItems(){
     }))
   })
   const items = document.querySelectorAll(".pop-item")
-  const box = document.querySelector(".popular-box")
+const box = document.querySelector(".popular-box")
 
-  const positions = [
-    { x: 10, y: 65 },
-    { x: 75, y: 70 },
-    { x: 20, y: 30 },
-    { x: 60, y: 50 },
-    { x: 55, y: 10 },
-    { x: 80, y: 15 },
-    { x: 60, y: 85 }
-  ]
+const positions = [
+  { x: 10, y: 65 },
+  { x: 75, y: 70 },
+  { x: 20, y: 30 },
+  { x: 60, y: 50 },
+  { x: 55, y: 10 },
+  { x: 80, y: 15 },
+  { x: 60, y: 85 }
+]
+
+function setItemPositions() {
+  const isSmall = box.offsetWidth < 500
 
   items.forEach((item, i) => {
-    const pos = positions[i] || { x: 50, y: 50 }
+    if (isSmall) {
+      const perRow = Math.ceil(items.length / 2)
+      const row = i < perRow ? 0 : 1
+      const indexInRow = row === 0 ? i : i - perRow
+      const itemsInRow = row === 0 ? perRow : items.length - perRow
 
-    item.style.left = pos.x + "%"
-    item.style.top = pos.y + "%"
+      const x = ((indexInRow + 1) / (itemsInRow + 1)) * 100
+      const y = row === 0 ? 30 : 70
 
-    let t = Math.random() * 100
-
-    function float() {
-      t += 0.02
-      const x = Math.sin(t + i) * 5
-      const y = Math.cos(t + i) * 5
-
-      if (!item.classList.contains("active")) {
-        item.style.transform = `translate(${x}px, ${y}px)`
-      }
-
-      requestAnimationFrame(float)
-    }
-
-    float()
-
-    item.onmouseenter = () => {
-      items.forEach(i => i.classList.remove("active"))
-      item.classList.add("active")
-      box.classList.add("blur-active")
-
-      const id = +item.dataset.id
-      item.querySelector(".pop-count").textContent = getCartItemCount(id)
-    }
-
-    item.onmouseleave = () => {
-      item.classList.remove("active")
-      box.classList.remove("blur-active")
+      item.style.left = x + "%"
+      item.style.top = y + "%"
+    } else {
+      const pos = positions[i] || { x: 50, y: 50 }
+      item.style.left = pos.x + "%"
+      item.style.top = pos.y + "%"
     }
   })
+}
 
-  box.onclick = (e) => {
-    const plus = e.target.closest(".pop-plus")
-    const minus = e.target.closest(".pop-minus")
-    if (!plus && !minus) return
+items.forEach((item, i) => {
+  let t = Math.random() * 100
 
-    const item = e.target.closest(".pop-item")
+  function float() {
+    t += 0.02
+    const x = Math.sin(t + i) * 5
+    const y = Math.cos(t + i) * 5
+
+    if (!item.classList.contains("active")) {
+      item.style.transform = `translate(${x}px, ${y}px)`
+    }
+
+    requestAnimationFrame(float)
+  }
+
+  float()
+
+  item.onmouseenter = () => {
+    items.forEach(i => i.classList.remove("active"))
+    item.classList.add("active")
+    box.classList.add("blur-active")
+
     const id = +item.dataset.id
-    const current = getCartItemCount(id)
-
-    if (plus) setCartItemCount(id, current + 1)
-    if (minus) setCartItemCount(id, current - 1)
-
     item.querySelector(".pop-count").textContent = getCartItemCount(id)
   }
 
-  syncPopularCounts()
+  item.onmouseleave = () => {
+    item.classList.remove("active")
+    box.classList.remove("blur-active")
+  }
+})
+
+box.onclick = (e) => {
+  const plus = e.target.closest(".pop-plus")
+  const minus = e.target.closest(".pop-minus")
+  if (!plus && !minus) return
+
+  const item = e.target.closest(".pop-item")
+  const id = +item.dataset.id
+  const current = getCartItemCount(id)
+
+  if (plus) setCartItemCount(id, current + 1)
+  if (minus) setCartItemCount(id, current - 1)
+
+  item.querySelector(".pop-count").textContent = getCartItemCount(id)
+}
+
+setItemPositions()
+window.addEventListener("resize", setItemPositions)
+
+syncPopularCounts()
 }
 
 function showProducts(category = "all") {
