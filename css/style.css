@@ -511,6 +511,7 @@ h2 {
 
 
 .cart-item {
+  display: flex;
   flex: 0 0 auto;
   width: 165px;
   height: 230px;
