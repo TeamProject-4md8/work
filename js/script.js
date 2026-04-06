@@ -272,14 +272,15 @@ function updateCart() {
     card.className = "cart-item"
 
     card.innerHTML = `
+      
+      <img src="${item.product_image}" width="100px" height="100px">
+      <h6>${item.product_name}</h6>
+      <p>${item.product_price} ₽</p>
       <div class="pop-controls">
         <button class="pop-minus" type="button">-</button>
         <span class="pop-count">${getCartItemCount(item.id_product)}</span>
         <button class="pop-plus" type="button">+</button>
       </div>
-      <img src="${item.product_image}" width="100px" height="100px">
-      <h6>${item.product_name}</h6>
-      <p>${item.product_price} ₽</p>
     `
     card.onclick = (e) => {
       const plus = e.target.closest(".pop-plus")
