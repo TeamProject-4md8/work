@@ -48,6 +48,13 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
+burger.addEventListener('click', function(e) {
+  e.stopPropagation();
+  burger.classList.toggle('active');
+  menu.classList.toggle('open');
+  body.classList.toggle('menu-open');
+});
+
 function createPopItem({ id, name, price, oldPrice, weight, image }) {
   const item = document.createElement("div");
   item.className = "pop-item";
