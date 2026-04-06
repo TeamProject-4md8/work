@@ -758,6 +758,7 @@ h2 {
 }
 
 .popular-box .pop-item {
+  min-height: 100vh;
   filter: none;
 }
 
