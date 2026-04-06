@@ -508,16 +508,7 @@ h2 {
   width: 50%;
 }
 
-.cart-items {
-  min-height: 240px;
-  margin-bottom: 20px;
-  display: flex;
-  gap: 8px;
-  overflow-x: auto;
-  overflow-y: hidden;
-  padding: 10px;
-  scroll-behavior: smooth;
-}
+
 
 .cart-item {
   flex: 0 0 auto;
