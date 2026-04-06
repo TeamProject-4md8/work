@@ -271,6 +271,7 @@ h2 {
 .catalog,
 .cart-section,
 .contacts {
+  min-heigh: 100vh;
   padding: 80px 0;
 }
 
